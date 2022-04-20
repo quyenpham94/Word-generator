@@ -9,14 +9,14 @@ const { sqlForPartialUpdate } = require("../helpers/sql");
 class Category {
      /** Create a category (from data), update db, return new category data.
    *
-   * data should be { handle, name, description }
+   * data should be { handle, name }
    *
-   * Returns { handle, name, description }
+   * Returns { handle, name }
    *
    * Throws BadRequestError if category already in database.
    * */
 
-    static async create({ handle, name, description }) {
+    static async create({ handle, name }) {
         const duplicateCheck = await db.query(
              `SELECT handle
                 FROM categories
@@ -29,10 +29,10 @@ class Category {
 
         const result = await db.query(
             `INSERT INTO categories
-                (handle, name, description)
+                (handle, name)
                 VALUES ($1, $2, $3)
-                RETURNING handle, name, description`,
-            [handle, name, description]
+                RETURNING handle, name`,
+            [handle, name]
         );
         const category = result.rows[0];
 
@@ -44,13 +44,12 @@ class Category {
    * searchFilters (all optional):
    * - name (will find case-insensitive, partial matches)
    *
-   * Returns [{ handle, name, description }, ...]
+   * Returns [{ handle, name }, ...]
    * */
 
     static async findAll(searchFilters = {}) {
         let query = `SELECT handle,
-                            name,
-                            description
+                            name
                     FROM categories`;
         let whereExpressions = [];
         let queryValues = [];
@@ -78,7 +77,7 @@ class Category {
     
      /** Given a category handle, return data about category.
    *
-   * Returns { handle, name, description, words }
+   * Returns { handle, name, words }
    *   where words is [{ id, name }, ...]
    *
    * Throws NotFoundError if not found.
@@ -88,7 +87,6 @@ class Category {
         const categoryRes = await db.query( 
             `SELECT handle, 
                     name,
-                    description,
                 FROM categories
                 WHERE handle = $1`,
             [handle]
@@ -115,9 +113,9 @@ class Category {
    * This is a "partial update" --- it's fine if data doesn't contain all the
    * fields; this only changes provided ones.
    *
-   * Data can include: {name, description}
+   * Data can include: {name}
    *
-   * Returns {handle, name, description}
+   * Returns {handle, name}
    *
    * Throws NotFoundError if not found.
    */
@@ -130,8 +128,7 @@ class Category {
                            SET ${setCols}
                            WHERE handle = ${handleVarIdx}
                            RETURNING handle,
-                                     name,
-                                     description`;
+                                     name`;
         const result = await db.query(querySql, [...values, handle]);
         const category = result.rows[0];
 

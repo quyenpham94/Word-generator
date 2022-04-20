@@ -2,7 +2,7 @@
 
 /** Routes for users. */
 
-const jsonschemma = require("jsonschema");
+const jsonschema = require("jsonschema");
 
 const express = require("express");
 const { ensureCorrectUserOrAdmin, ensureAdmin } = require("../middleware/auth");
@@ -10,7 +10,7 @@ const { BadRequestError } = require("../expressError");
 const User = require("../models/user");
 const { createToken } = require("../helpers/tokens");
 const userNewSchema = require("../schemas/userNew.json");
-const userUpdateSchema = require("../shemas/userUpdate.json");
+const userUpdateSchema = require("../schemas/userUpdate.json");
 
 const router = express.Router();
 
@@ -67,15 +67,15 @@ router.get("/", ensureAdmin, async function (req, res, next) {
  **/
 
 router.get(
-    "/:username", 
+    "/:username",
     ensureCorrectUserOrAdmin,
     async function (req, res, next) {
-        try {
-            const user = await User.get(req.params.username);
-            return res.json({ user });
-        } catch (err) {
-            return next(err);
-        }
+      try {
+        const user = await User.get(req.params.username);
+        return res.json({ user });
+      } catch (err) {
+        return next(err);
+      }
     }
 );
 

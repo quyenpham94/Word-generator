@@ -67,7 +67,7 @@ router.get("/", async function (req, res, next) {
 /** GET /[wordId] => { word }
  *
  * Returns { id, name, category }
- *   where category is { handle, name, description }
+ *   where category is { handle, name }
  *
  * Authorization required: none
  */
@@ -103,6 +103,7 @@ router.patch("/:id", ensureAdmin, async function (req, res, next) {
     } catch (err) {
         return next(err);
     }
+
 });
 
 /** DELETE /[handle]  =>  { deleted: id }

@@ -17,9 +17,9 @@ const router = new express.Router();
 
 /** POST / { category } =>  { category }
  *
- * category should be { handle, name, description }
+ * category should be { handle, name }
  *
- * Returns { handle, name, description }
+ * Returns { handle, name }
  *
  * Authorization required: admin
  */
@@ -40,7 +40,7 @@ router.post("/", ensureAdmin, async function (req, res, next) {
 });
 
 /** GET /  =>
- *   { categories: [ { handle, name, description }, ...] }
+ *   { categories: [ { handle, name }, ...] }
  *
  * Can filter on provided search filters:
  * - nameLike (will find case-insensitive, partial matches)
@@ -67,7 +67,7 @@ router.get("/", async function (req, res, next) {
 
 /** GET /[handle]  =>  { category }
  *
- *  Category is { handle, name, description, words }
+ *  Category is { handle, name, words }
  *   where words is [{ id, name }, ...]
  *
  * Authorization required: none
@@ -86,9 +86,9 @@ router.get("/:handle", async function (req, res, next) {
  *
  * Patches category data.
  *
- * fields can be: { name, description }
+ * fields can be: { name }
  *
- * Returns { handle, name, description }
+ * Returns { handle, name }
  *
  * Authorization required: admin
  */

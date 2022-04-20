@@ -12,7 +12,7 @@ async function commonBeforeAll() {
   await db.query("DELETE FROM users");
 
   await db.query(`
-    INSERT INTO categories (handle, name, description)
+    INSERT INTO categories (handle, name)
     VALUES ('c1', 'C1', 'Desc1'),
            ('c2', 'C2', 'Desc2'),
            ('c3', 'C3', 'Desc3')`);

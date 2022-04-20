@@ -17,17 +17,14 @@ async function commonBeforeAll() {
   await Category.create({
     handle: "c1",
     name: "C1",
-    description: "Desc1",
   });
   await Category.create({
     handle: "c2",
     name: "C2",
-    description: "Desc2",
   });
   await Category.create({
     handle: "c3",
     name: "C3",
-    description: "Desc3",
   });
 
   testWordIds[0] = (await Word.create({ name: "I1", categoryHandle: "c1" })).id;

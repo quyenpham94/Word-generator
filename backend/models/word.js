@@ -67,7 +67,7 @@ class Word {
   /** Given an word id, return data about word.
    *
    * Returns { id, name, categoryHandle, category }
-   *   where category is { handle, name, description }
+   *   where category is { handle, name }
    *
    * Throws NotFoundError if not found.
    **/
@@ -88,8 +88,7 @@ class Word {
 
         const categoriesRes = await db.query(
             `SELECT handle,
-                    name,
-                    description
+                    name
                 FROM categories
                 WHERE handle = $1`,
             [word.categoryHandle]
