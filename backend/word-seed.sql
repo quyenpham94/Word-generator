@@ -14,7 +14,8 @@ INSERT INTO users (username, password, first_name, last_name, email, is_admin)
             'joel@joelburton.com',
             TRUE);
 
-INSERT INTO categories(handle, name)
+INSERT INTO categories (handle, 
+                        name)
     VALUES ('animals', 'Animals'),
            ('sports','Sports'),
            ('places', 'Places'),
@@ -22,7 +23,7 @@ INSERT INTO categories(handle, name)
         
 INSERT INTO words (name, category_handle)
     VALUES ('leopard', 'animals'),
-           ('reindeer','animlas'),
+           ('reindeer','animals'),
            ('clam', 'animals'),
            ('crab', 'animals'),
            ('donkey', 'animals'),

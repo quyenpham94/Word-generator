@@ -1,7 +1,6 @@
 CREATE TABLE categories (
     handle VARCHAR(25) PRIMARY KEY CHECK (handle = lower(handle)),
-    name TEXT UNIQUE NOT NULL,
-    description TEXT NOT NULL
+    name TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE users (

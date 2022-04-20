@@ -36,9 +36,9 @@ class Word {
    * */
   
     static async findAll({ name } = {}) {
-        let query = `SELECT i.id,
-                            i.name,
-                            i.category_handle AS "categoryHandle",
+        let query = `SELECT w.id,
+                            w.name,
+                            w.category_handle AS "categoryHandle",
                             c.name AS "categoryName"
                     FROM words w
                         LEFT JOIN categories AS c ON c.handle = w.category_handle`;
