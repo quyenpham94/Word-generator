@@ -67,8 +67,8 @@ router.get("/", async function (req, res, next) {
 
 /** GET /[handle]  =>  { category }
  *
- *  Category is { handle, name, description, items }
- *   where items is [{ id, name }, ...]
+ *  Category is { handle, name, description, words }
+ *   where words is [{ id, name }, ...]
  *
  * Authorization required: none
  */

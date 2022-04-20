@@ -60,8 +60,8 @@ router.get("/", ensureAdmin, async function (req, res, next) {
 
 /** GET /[username] => { user }
  *
- * Returns { username, firstName, lastName, isAdmin, items }
- *   where items is { id, name, categoryHandle, categoryName, state }
+ * Returns { username, firstName, lastName, isAdmin, words }
+ *   where words is { id, name, categoryHandle, categoryName, state }
  *
  * Authorization required: admin or same user-as-:username
  **/
@@ -126,9 +126,9 @@ router.delete(
     }
 );
 
-/** POST /[username]/items/[id]  { state } => { view }
+/** POST /[username]/words/[id]  { state } => { view }
  *
- * Returns {"viewed": itemId}
+ * Returns {"viewed": wordId}
  *
  * Authorization required: admin or same-user-as-:username
  * */
@@ -139,8 +139,8 @@ router.post(
     async function (req, res, next) {
         try {
             const wordId = +req.params.id;
-            await User.viewWord(req.params.username, itemId);
-            return res.json({ viewed: itemId });
+            await User.viewWord(req.params.username, wordId);
+            return res.json({ viewed: wordId });
         } catch (err) {
             return next(err);
         }

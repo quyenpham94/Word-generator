@@ -24,7 +24,7 @@ CREATE TABLE words (
 CREATE TABLE views (
     username VARCHAR(25)
         REFERENCES users ON DELETE CASCADE,
-    item_id INTEGER
-        REFERENCES items ON DELETE CASCADE,
-    PRIMARY KEY (username, item_id)
+    word_id INTEGER
+        REFERENCES words ON DELETE CASCADE,
+    PRIMARY KEY (username, word_id)
 );

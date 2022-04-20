@@ -78,8 +78,8 @@ class Category {
     
      /** Given a category handle, return data about category.
    *
-   * Returns { handle, name, description, items }
-   *   where items is [{ id, name }, ...]
+   * Returns { handle, name, description, words }
+   *   where words is [{ id, name }, ...]
    *
    * Throws NotFoundError if not found.
    **/
