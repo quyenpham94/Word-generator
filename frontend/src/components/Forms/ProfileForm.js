@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 import Message from "./Message";
 import WordGeneratorApi from "../../api/api";
@@ -34,7 +34,7 @@ const ProfileForm = () => {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        let profileDate = {
+        let profileData = {
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,

@@ -96,80 +96,98 @@ const SignupForm = ({ signup }) => {
     };
 
     return (
-        <div className="SignupForm">
-            <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-                <h2 className="mb-3">Sign Up</h2>
-                <div className="card">
-                    <div className="card-body">
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Username</label>
-                                <input 
-                                    name="username"
-                                    className="form-control"
-                                    value={formData.username}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input 
-                                    type="password"
-                                    name="password"
-                                    className="form-control"
-                                    value={formData.password}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>First Name</label>
-                                <input 
-                                    name="firstName"
-                                    className="form-control"
-                                    value={formData.firstName}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Last Name</label>
-                                <input 
-                                    name="lastName"
-                                    className="form-control"
-                                    value={formData.lastName}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Email</label>
-                                <input
-                                    type="email" 
-                                    name="email"
-                                    className="form-control"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            
-                            {formErrors.length 
-                                ? <Alert type="danger" messages={formErrors} />
-                                : null
-                            }
-
-                            <button
-                                type="submit"
-                                className="btn btn-primary float-right"
-                                onSubmit={handleSubmit}
-                            >
-                                Submit
-                            </button>
-
-                        </form>
-                    </div>
-                </div>
+        <div className="">
+          <h3 className="text-success text-center">Sign Up</h3>
+          <Form className="" onSubmit={handleSubmit} inline>
+            <FormGroup floating>
+              <Input
+                id="username"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleChange}
+                type="text"
+                required
+              />
+              <Label for="username">Username</Label>
+              {touched.username && errors.username && (
+                <p className="text-danger">{errors.username}</p>
+              )}
+            </FormGroup>{" "}
+            <FormGroup floating>
+              <Input
+                id="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                type="password"
+                required
+              />
+              <Label for="password">Password</Label>
+              {touched.password && errors.password && (
+                <p className="text-danger">{errors.password}</p>
+              )}
+            </FormGroup>{" "}
+            <FormGroup floating>
+              <Input
+                id="firstName"
+                name="firstName"
+                placeholder="First name"
+                value={formData.firstName}
+                onChange={handleChange}
+                type="text"
+                required
+              />
+              <Label for="fname">First Name</Label>
+              {touched.firstName && errors.firstName && (
+                <p className="text-danger">{errors.firstName}</p>
+              )}
+            </FormGroup>{" "}
+            <FormGroup floating>
+              <Input
+                id="lastName"
+                name="lastName"
+                placeholder="Last name"
+                value={formData.lastName}
+                onChange={handleChange}
+                type="text"
+                required
+              />
+              <Label for="lname">Last Name</Label>
+              {touched.lastName && errors.lastName && (
+                <p className="text-danger">{errors.lastName}</p>
+              )}
+            </FormGroup>{" "}
+            <FormGroup floating>
+              <Input
+                id="email"
+                name="email"
+                placeholder="Email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <Label for="email">Email</Label>
+              {touched.email && errors.email && (
+                <p className="text-danger">{errors.email}</p>
+              )}
+            </FormGroup>{" "}
+            {errors.length ? <Message type="danger" messages={errors} /> : null}
+            <div className="col text-center mt-4 mb-2">
+              <Button color="success" disabled={!isValid}>
+                Sign Up
+              </Button>
             </div>
-
+            <div className="text-center">
+              <span>
+                Already have an account? <Link to="/login">Login</Link>
+              </span>
+            </div>
+          </Form>
         </div>
-    )
+      );
 }
 
 export default SignupForm;

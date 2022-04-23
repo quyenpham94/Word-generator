@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import WordGeneratorApi from "../../api/api";
 import CategoryCard  from "./CategoryCard";
 import Loading from "../Navigation/Loading";
+import SearchForm from "../Forms/SearchForm";
 // import Footer from "../Pages/Footer";
 
 const CategoryList = () => {
