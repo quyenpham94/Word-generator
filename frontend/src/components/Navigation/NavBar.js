@@ -9,7 +9,7 @@ import {
   NavLink,
   Collapse,
 } from "reactstrap";
-import "./Navbar.css";
+// import "./Navbar.css";
 
 /** Shows up on every page.
  *

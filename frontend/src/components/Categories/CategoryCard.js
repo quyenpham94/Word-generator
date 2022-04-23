@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardTitle } from "reactstrap";
-import "./CategoryCard.css";
+// import "./CategoryCard.css";
 
 /** Show information of a category on the Category List 
  * 
