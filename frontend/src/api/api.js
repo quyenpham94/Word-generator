@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
 /** API Class.
  *
@@ -48,7 +48,7 @@ class WordGeneratorApi {
 
     /** Get details on a category by handle. */
 
-    static async getCategories(handle) {
+    static async getCategory(handle) {
         let res = await this.request(`categories/${handle}`);
         return res.category;
     }
