@@ -22,9 +22,8 @@ const CategoryDetail = () => {
     if (!category) return <LoadingSpinner />;
 
     return (
-        <div className="">
+        <div className="text-center">
             <h1 className="text-success">{category.name}</h1>
-            <p className="text-center">{category.description}</p>
             <WordCard words={category.words} />
         </div>
     )
