@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import WordGeneratorApi from "../api/api";
+import WordGeneratorApi from "./../api/api";
 import LoadingSpinner from "../common/LoadingSpinner.js";
+import WordCard from "./WordCard";
 
 const CategoryDetail = () => {
     const { handle } = useParams();
@@ -23,6 +24,8 @@ const CategoryDetail = () => {
     return (
         <div className="">
             <h1 className="text-success">{category.name}</h1>
+            <p className="text-center">{category.description}</p>
+            <WordCard words={category.words} />
         </div>
     )
 }
