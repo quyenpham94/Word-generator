@@ -1,6 +1,6 @@
 "use strict";
 
-/** Express app for funlearning. */
+/** Express app for wordgenerator. */
 
 const express = require("express");
 const cors = require("cors");

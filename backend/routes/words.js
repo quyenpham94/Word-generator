@@ -24,18 +24,18 @@ const router = express.Router({ mergeParams: true });
  */
 
 router.post("/", ensureAdmin, async function (req, res, next) {
-    try {
-        const validator = jsonschema.validate(req.body, wordNewSchema);
-        if (!validator.valid) {
-            const errs = validator.errors.map((e) => e.stack);
-            throw new BadRequestError(errs);
-        }
-
-        const word = await Word.create(req.body);
-        return res.status(201).json({ word });
-    } catch (err) {
-        return next(err);
+  try {
+    const validator = jsonschema.validate(req.body, wordNewSchema);
+    if (!validator.valid) {
+      const errs = validator.errors.map((e) => e.stack);
+      throw new BadRequestError(errs);
     }
+
+    const word = await Word.create(req.body);
+    return res.status(201).json({ word });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 /** GET / =>
@@ -43,42 +43,41 @@ router.post("/", ensureAdmin, async function (req, res, next) {
  *
  * Can provide search filter in query:
  * - name (will find case-insensitive, partial matches)
- * 
  * Authorization required: none
  */
 
 router.get("/", async function (req, res, next) {
-    const q = req.query;
+  const q = req.query;
 
-    try {
-        const validator = jsonschema.validate(q, wordSearchSchema);
-        if (!validator.valid) {
-            const errs = validator.errors.map((e) => e.stack);
-            throw new BadRequestError(errs);
-        }
-
-        const words = await Word.findAll(q);
-        return res.json({ words });
-    } catch (err) {
-        return next(err);
+  try {
+    const validator = jsonschema.validate(q, wordSearchSchema);
+    if (!validator.valid) {
+      const errs = validator.errors.map((e) => e.stack);
+      throw new BadRequestError(errs);
     }
+
+    const words = await Word.findAll(q);
+    return res.json({ words });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 /** GET /[wordId] => { word }
  *
  * Returns { id, name, category }
- *   where category is { handle, name }
+ *   where category is { handle, name, description }
  *
  * Authorization required: none
  */
 
 router.get("/:id", async function (req, res, next) {
-    try {
-        const word = await Word.get(req.params.id);
-        return res.json({ word });
-    } catch (err) {
-        return next(err);
-    }
+  try {
+    const word = await Word.get(req.params.id);
+    return res.json({ word });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 /** PATCH /[wordId]  { fld1, fld2, ... } => { word }
@@ -91,19 +90,18 @@ router.get("/:id", async function (req, res, next) {
  */
 
 router.patch("/:id", ensureAdmin, async function (req, res, next) {
-    try {
-        const validator = jsonschema.validate(req.body, wordUpdateSchema);
-        if (!validator.valid) {
-            const errs = validator.errors.map((e) => e.stack);
-            throw new BadRequestError(errs);
-        }
-
-        const word = await Word.update(req.params.id, req.body);
-        return res.json({ word });
-    } catch (err) {
-        return next(err);
+  try {
+    const validator = jsonschema.validate(req.body, wordUpdateSchema);
+    if (!validator.valid) {
+      const errs = validator.errors.map((e) => e.stack);
+      throw new BadRequestError(errs);
     }
 
+    const word = await Word.update(req.params.id, req.body);
+    return res.json({ word });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 /** DELETE /[handle]  =>  { deleted: id }
@@ -112,12 +110,12 @@ router.patch("/:id", ensureAdmin, async function (req, res, next) {
  */
 
 router.delete("/:id", ensureAdmin, async function (req, res, next) {
-    try {
-        await Word.remove(req.params.id);
-        return res.json({ deleted: +req.params.id });
-    } catch (err) {
-        return next(err);
-    }
+  try {
+    await Word.remove(req.params.id);
+    return res.json({ deleted: +req.params.id });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 module.exports = router;

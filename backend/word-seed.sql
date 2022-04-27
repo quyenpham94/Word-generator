@@ -15,11 +15,12 @@ INSERT INTO users (username, password, first_name, last_name, email, is_admin)
             TRUE);
 
 INSERT INTO categories (handle, 
-                        name)
-    VALUES ('animals', 'Animals'),
-           ('sports','Sports'),
-           ('places', 'Places'),
-           ('food and cooking', 'Food and Cooking');
+                        name,
+                        description)
+    VALUES ('animals', 'Animals','animals'),
+           ('sports','Sports','sports'),
+           ('places', 'Places','places'),
+           ('food and cooking', 'Food and Cooking','food and cooking');
         
 INSERT INTO words (name, category_handle)
     VALUES ('leopard', 'animals'),

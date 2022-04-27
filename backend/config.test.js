@@ -18,9 +18,9 @@ describe("config can come from env", function () {
     delete process.env.BCRYPT_WORK_FACTOR;
     delete process.env.DATABASE_URL;
 
-    expect(config.getDatabaseUri()).toEqual("wordgenerator");
+    expect(config.getDatabaseUri()).toEqual("word_generator");
     process.env.NODE_ENV = "test";
 
-    expect(config.getDatabaseUri()).toEqual("wordgenerator_test");
+    expect(config.getDatabaseUri()).toEqual("word_test");
   });
 });
