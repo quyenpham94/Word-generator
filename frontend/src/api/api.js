@@ -10,7 +10,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
  *
  */
 
-class FunLearningApi {
+class WordGeneratorApi {
   // the token for interactive with the API will be stored here.
   static token;
 
@@ -20,7 +20,7 @@ class FunLearningApi {
     //there are multiple ways to pass an authorization token, this is how you pass it in the header.
     //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${FunLearningApi.token}` };
+    const headers = { Authorization: `Bearer ${WordGeneratorApi.token}` };
     const params = method === "get" ? data : {};
 
     try {
@@ -55,15 +55,15 @@ class FunLearningApi {
     return res.category;
   }
 
-  /** Get items (filtered by item name if not undefined) */
-  static async getItems(name) {
-    let res = await this.request("items", { name });
-    return res.items;
+  /** Get words (filtered by word name if not undefined) */
+  static async getWords(name) {
+    let res = await this.request("words", { name });
+    return res.words;
   }
 
-  // User has viewed an item
+  // User has viewed an word
   static async view(username, id) {
-    await this.request(`users/${username}/items/${id}`, {}, "post");
+    await this.request(`users/${username}/words/${id}`, {}, "post");
   }
 
   // Get token for login from username, password
@@ -85,4 +85,4 @@ class FunLearningApi {
   }
 }
 
-export default FunLearningApi;
+export default WordGeneratorApi;
