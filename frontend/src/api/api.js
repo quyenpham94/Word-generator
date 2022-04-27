@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 /** API Class.
  *
@@ -10,82 +10,79 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
  *
  */
 
-class WordGeneratorApi {
-    // the token for interactive with the API will be stored here.
-    static token;
+class FunLearningApi {
+  // the token for interactive with the API will be stored here.
+  static token;
 
-    static async request(endpoint, data = {}, method = "get") {
-        console.debug("API Call:", endpoint, data, method);
+  static async request(endpoint, data = {}, method = "get") {
+    console.debug("API Call:", endpoint, data, method);
 
-        const url = `${BASE_URL}/${endpoint}`;
-        const headers = { Authorization: `Bearer ${WordGeneratorApi.token}` };
-        const params = method === "get" ? data: {};
+    //there are multiple ways to pass an authorization token, this is how you pass it in the header.
+    //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
+    const url = `${BASE_URL}/${endpoint}`;
+    const headers = { Authorization: `Bearer ${FunLearningApi.token}` };
+    const params = method === "get" ? data : {};
 
-        try {
-            return (await axios({ url, method, data, params, headers })).data;
-        } catch (err) {
-            console.error("API Error:", err.response);
-            let message = err.response.data.error.message;
-            throw Array.isArray(message) ? message : [message];
-        }
+    try {
+      return (await axios({ url, method, data, params, headers })).data;
+    } catch (err) {
+      console.error("API Error:", err.response);
+      let message = err.response.data.error.message;
+      throw Array.isArray(message) ? message : [message];
     }
-    
-    // Individual API routes
+  }
 
-    /** Get the current user. */
+  // Individual API routes
 
-    static async getCurrentUser(username) {
-        let res = await this.request(`users/${username}`);
-        return res.user;
-    }
+  /** Get the current user. */
 
-    /** Get Categories (filered by name id not undefined) */
-    
-    static async getCategories(name) {
-        let res = await this.request("categories", { name });
-        return res.categories;
-    }
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
 
-    /** Get details on a category by handle. */
+  /** Get categories (filtered by name if not undefined) */
 
-    static async getCategory(handle) {
-        let res = await this.request(`categories/${handle}`);
-        return res.category;
-    }
+  static async getCategories(name) {
+    let res = await this.request("categories", { name });
+    return res.categories;
+  }
 
-    /** Get words (filtered by word name if not undefined) */
-    
-    static async getWords(name) {
-        let res = await this.request("words", { name });
-        return res.words;
-    }
+  /** Get details on a category by handle. */
 
-    /** User has viewed a word */ 
-    
-    static async view(username, id) {
-        await this.request(`users/${username}/words/${id}`, {}, "post");
-    }
+  static async getCategory(handle) {
+    let res = await this.request(`categories/${handle}`);
+    return res.category;
+  }
 
-    /** Get token for login from username, password */ 
+  /** Get items (filtered by item name if not undefined) */
+  static async getItems(name) {
+    let res = await this.request("items", { name });
+    return res.items;
+  }
 
-    static async login(data) {
-        let res = await this.request(`auth/token`, data, "post");
-        return res.token;
-    }
+  // User has viewed an item
+  static async view(username, id) {
+    await this.request(`users/${username}/items/${id}`, {}, "post");
+  }
 
-    /** Signup for site. */ 
+  // Get token for login from username, password
+  static async login(data) {
+    let res = await this.request(`auth/token`, data, "post");
+    return res.token;
+  }
 
-    static async signup(data) {
-        let res = await this.request(`auth/register`, data, "post");
-        return res.token;
-    }
+  // Sign up
+  static async signup(data) {
+    let res = await this.request(`auth/register`, data, "post");
+    return res.token;
+  }
 
-    /** Save user profile  */ 
-    
-    static async saveProfile(username, data) {
-        let res = await this.request(`users/${username}`, data, "patch");
-        return res.user;
-    }
+  // Save user profile
+  static async saveProfile(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
+  }
 }
 
-export default WordGeneratorApi;
+export default FunLearningApi;

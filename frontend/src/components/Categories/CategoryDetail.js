@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import WordGeneratorApi from "../../api/api";
-// import WordCard from "../Words/WordCard";
-import Loading from "../Navigation/Loading.js";
+import FunLearningApi from "../../api/api";
+import ItemCard from "../Items/ItemCard";
+import Loading from "../Navigation/Loading";
+
+/** Show the category detail with its item list
+ *
+ * Routed as /categories/:handle
+ *
+ * Routes -> CategoryDetail -> ItemList
+ */
 
 const CategoryDetail = () => {
-    const { handle } = useParams();
-    const [category, setCategory] = useState(null);
+  const { handle } = useParams();
+  const [category, setCategory] = useState(null);
 
-    useEffect(
-        function getCategoryDetail() {
-            async function getCategory() {
-                let category = await WordGeneratorApi.getCategory(handle);
-                setCategory(category);
-            }
-            getCategory();
-        },
-        [handle]
-    );
+  useEffect(
+    function getCategoryDetail() {
+      async function getCategory() {
+        let category = await FunLearningApi.getCategory(handle);
+        setCategory(category);
+      }
+      getCategory();
+    },
+    [handle]
+  );
 
-    if (!category) return <Loading />;
+  if (!category) return <Loading />;
 
-    return (
-        <div className="">
-            <h1 className="text-success">{category.name}</h1>
-            {/* <WordCard words={category.words} /> */}
-        </div>
-    )
-}
+  return (
+    <div className="mt-4">
+      <h1 className="text-success text-center">{category.name}</h1>
+      <p className="text-center">{category.description}</p>
+      <ItemCard items={category.items} />
+    </div>
+  );
+};
 
 export default CategoryDetail;

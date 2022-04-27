@@ -4,17 +4,17 @@ import UserContext from "../../UserContext";
 
 // Prevent currentUser to access routes /signup and /login
 const ProtectingRoute = ({ exact, path, children }) => {
-    const { currentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
-    if (currentUser) {
-        return <Redirect to="/" />;
-    }
+  if (currentUser) {
+    return <Redirect to="/" />;
+  }
 
-    return (
-        <Route exact={exact} path={path}>
-            {children}
-        </Route>
-    );
+  return (
+    <Route exact={exact} path={path}>
+      {children}
+    </Route>
+  );
 };
 
 export default ProtectingRoute;

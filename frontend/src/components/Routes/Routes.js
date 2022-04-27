@@ -15,33 +15,33 @@ import ProtectingRoute from "./ProtectingRoute";
  */
 
 const Routes = ({ login, signup }) => {
-    return (
-        <div>
-            <Switch>
-                <Route exact path="/">
-                    <Home login={login} />
-                </Route>
-                <ProtectingRoute exact path="/login">
-                    <LoginForm login={login} />
-                </ProtectingRoute>
-                <ProtectingRoute exact path="/signup">
-                    <SignupForm signup={signup} />
-                </ProtectingRoute>
+  return (
+    <div>
+      <Switch>
+        <Route exact path="/">
+          <Home login={login} />
+        </Route>
+        <ProtectingRoute exact path="/login">
+          <LoginForm login={login} />
+        </ProtectingRoute>
+        <ProtectingRoute exact path="/signup">
+          <SignupForm signup={signup} />
+        </ProtectingRoute>
 
-                <PrivateRoute exact path="/categories">
-                    <CategoryList />
-                </PrivateRoute>
-                <PrivateRoute exact path="/categories/:handle">
-                    <CategoryDetail />
-                </PrivateRoute>
-                <PrivateRoute exact path="/profile">
-                    <ProfileForm />
-                </PrivateRoute>
+        <PrivateRoute exact path="/categories">
+          <CategoryList />
+        </PrivateRoute>
+        <PrivateRoute exact path="/categories/:handle">
+          <CategoryDetail />
+        </PrivateRoute>
+        <PrivateRoute exact path="/profile">
+          <ProfileForm />
+        </PrivateRoute>
 
-                <Redirect to="/" />
-            </Switch>
-        </div>
-    );
+        <Redirect to="/" />
+      </Switch>
+    </div>
+  );
 };
 
 export default Routes;

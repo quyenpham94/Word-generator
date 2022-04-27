@@ -10,17 +10,17 @@ import UserContext from "../../UserContext";
  */
 
 const PrivateRoute = ({ exact, path, children }) => {
-    const { currentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
-    if (!currentUser) {
-        return <Redirect to="/login" />;
-    }
+  if (!currentUser) {
+    return <Redirect to="/login" />;
+  }
 
-    return (
-        <Route exact={exact} path={path}>
-            {children}
-        </Route>
-    );
+  return (
+    <Route exact={exact} path={path}>
+      {children}
+    </Route>
+  );
 };
 
 export default PrivateRoute;

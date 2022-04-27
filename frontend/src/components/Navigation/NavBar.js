@@ -9,7 +9,7 @@ import {
   NavLink,
   Collapse,
 } from "reactstrap";
-// import "./Navbar.css";
+import "./Navbar.css";
 
 /** Shows up on every page.
  *
@@ -32,8 +32,8 @@ const NavBar = ({ logout }) => {
   const loggedInNav = () => {
     return (
       <div>
-        <Navbar>
-          <NavbarBrand href="/">WORD GENERATOR</NavbarBrand>
+        <Navbar color="success" dark expand="md" light>
+          <NavbarBrand href="/">FUN LEARNING</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ms-auto" navbar>
@@ -63,7 +63,7 @@ const NavBar = ({ logout }) => {
     return (
       <div>
         <Navbar color="success" dark expand="md" light>
-          <NavbarBrand href="/">WORD GENERATOR</NavbarBrand>
+          <NavbarBrand href="/">FUN LEARNING</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ms-auto" navbar>

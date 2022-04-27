@@ -1,0 +1,7 @@
+.Home {
+  text-align: center;
+  color: #146356;
+  position: relative;
+  top: 50%;
+  transform: translatey(-50%);
+}
