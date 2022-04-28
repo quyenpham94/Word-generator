@@ -7,7 +7,7 @@ import LoginForm from "../auth/LoginForm";
 import SignupForm from "../auth/SignupForm";
 import ProfileForm from "../profiles/ProfileForm";
 import PrivateRoute from "./PrivateRoute";
-// import ProtectingRoute from "./ProtectingRoute";
+import ProtectingRoute from "./ProtectingRoute";
 
 /** Routes are wrapped by <Private> would only visible when logged in
  *
@@ -21,19 +21,19 @@ const Routes = ({ login, signup }) => {
                 <Route exact path="/">
                     <Homepage login={login}/>
                 </Route>
-                <Route exact path="/login">
+                <ProtectingRoute exact path="/login">
                     <LoginForm login={login} />
-                </Route>
-                <Route exact path="/signup">
+                </ProtectingRoute>
+                <ProtectingRoute exact path="/signup">
                     <SignupForm signup={signup} />
-                </Route>
+                </ProtectingRoute>
 
-                <Route exact path="/categories">
+                <PrivateRoute exact path="/categories">
                     <CategoryList />
-                </Route>
-                <Route exact path="/categories/:handle">
+                </PrivateRoute>
+                <PrivateRoute exact path="/categories/:handle">
                     <CategoryDetail />
-                </Route>
+                </PrivateRoute>
                 <PrivateRoute exact path="/profile">
                     <ProfileForm />
                 </PrivateRoute>

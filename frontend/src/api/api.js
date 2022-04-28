@@ -56,29 +56,34 @@ class WordGeneratorApi {
   }
 
   /** Get words (filtered by word name if not undefined) */
+  
   static async getWords(name) {
     let res = await this.request("words", { name });
     return res.words;
   }
 
-  // User has viewed an word
+  /** User has viewed an word */
+
   static async view(username, id) {
     await this.request(`users/${username}/words/${id}`, {}, "post");
   }
 
-  // Get token for login from username, password
+   /** Get token for login from username, password. */
+
   static async login(data) {
     let res = await this.request(`auth/token`, data, "post");
     return res.token;
   }
 
-  // Sign up
+   /** Signup for site. */
+
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
     return res.token;
   }
 
-  // Save user profile
+   /** Save user profile page. */
+
   static async saveProfile(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
