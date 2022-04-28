@@ -9,6 +9,7 @@ import {
   NavLink,
   Collapse,
 } from "reactstrap";
+
 // import "./Navbar.css";
 
 /** Shows up on every page.
@@ -28,35 +29,36 @@ const NavBar = ({ logout }) => {
 
   // authentication check
   const { currentUser } = useContext(UserContext);
+  console.debug("Navigation", "currentUser=", currentUser);
 
   const loggedInNav = () => {
     return (
-      <div>
-        <Navbar>
-          <NavbarBrand href="/">WORD GENERATOR</NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="ms-auto" navbar>
-              <NavItem>
-                <NavLink href="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/categories">Categories</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/profile">
-                  {currentUser.firstName}'s Profile
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/" onClick={logout}>
-                  Logout
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
+            <ul className="navbar-nav ml-auto">
+                <Navbar color="success" dark expand="md" light>
+                <NavbarBrand href="/">WORD GENERATOR</NavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <li className="nav-item mr-4">
+                    <NavLink className="nav-link" href="/">
+                        Home
+                    </NavLink>
+                </li>
+                <li className="nav-item mr-4">
+                    <NavLink className="nav-link" href="/categories">
+                        Categories
+                    </NavLink>
+                </li>
+                <li className="nav-item mr-4">
+                    <NavLink className="nav-link" href="/profile">
+                        Profile
+                    </NavLink>
+                </li>
+                <li className="nav-item mr-4">
+                    <NavLink className="nav-link" href="/" onClick={logout}>
+                        Log out {currentUser.first_name || currentUser.username}
+                    </NavLink>
+                </li>
+                </Navbar>
+            </ul>
     );
   };
   const loggedOutNav = () => {
