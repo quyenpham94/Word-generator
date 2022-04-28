@@ -8,7 +8,7 @@ import UserContext from "./auth/UserContext";
 import LoadingSpinner from "./common/LoadingSpinner";
 import useLocalStorage from "./hooks/useLocalStorage";
 
-// import './App.css';
+import './App.css';
 
 // Key name for storing token in localStorage to stay logged in
 export const TOKEN_STORAGE_ID = "wordgenerator-token";

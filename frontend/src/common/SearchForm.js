@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import { Form, FormGroup, Input, Label } from "reactstrap";
 
 
 /** Search box in Category List page
@@ -36,13 +36,13 @@ const SearchForm = ({ searchFor }) => {
                     onChange={handleChange}
                 />
                 <div className="text-center">
-                    <Button type="submit">
+                    <button type="submit">
                         Search
-                    </Button>
-                    <Button>
+                    </button>
+                    <button>
                         <Link to="/categories" />
                         Reset
-                    </Button>
+                    </button>
                 </div>
             </FormGroup>
         </Form>

@@ -10,11 +10,11 @@ import { Card, CardBody, CardTitle } from "reactstrap";
 
 const CategoryCard = ({ name, handle }) => {
     return (
-        <div>
+        <div className="category-card"> 
             <Link className="text-deccoration-none" to={`/categories/${handle}`}>
                 <Card body className="category-card" outline>
                     <CardBody>
-                        <CardTitle className="text-success">
+                        <CardTitle className="text-center">
                             {name}
                         </CardTitle>
                     </CardBody>

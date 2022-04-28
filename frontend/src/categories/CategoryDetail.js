@@ -23,7 +23,7 @@ const CategoryDetail = () => {
 
     return (
         <div className="text-center">
-            <h1 className="text-success">{category.name}</h1>
+            <h1>{category.name}</h1>
             <WordCard words={category.words} />
         </div>
     )

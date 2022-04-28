@@ -1,6 +1,6 @@
 import React , {useState} from "react";
 import WordDetail from "./WordDetail";
-// import "./WordCard.css";
+import "./WordCard.css";
 
 /** Show list of word cards.
  *
@@ -27,11 +27,11 @@ const WordCard = ({ words }) => {
           >Next
           </button>
       </div>
-      <div className="score">
-        <div className="card">{score}</div>
+      <div className="score  float-right">
+        <div className="score-count">{score}</div>
         <button type="button"
                 onClick={() => setScore( score + 1 )}
-        >Correct
+        >Correct Answer
         </button>
       </div>
 

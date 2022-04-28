@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import { Form, FormGroup, Input, Label } from "reactstrap";
 import Message from "../auth/Message";
 import WordGeneratorApi from "../api/api";
 import UserContext from "../auth/UserContext";
@@ -133,14 +133,14 @@ const ProfileForm = () => {
                 ) : null}
 
                 {currentUser.username !== "testuser" ? (
-                    <Button color="success">
+                    <button color="success">
                         Save Changes
-                    </Button>
+                    </button>
                 ) : (
                     <span className="text-danger">
-                        <Button>
+                        <button>
                             Save Changes
-                        </Button>
+                        </button>
                         Please sign up to change your profile
                     </span>
                 )} 

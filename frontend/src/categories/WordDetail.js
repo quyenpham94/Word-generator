@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
-
+import "./WordDetail.css";
 
 /** Show information about a word.
  *
@@ -17,7 +17,7 @@ const WordDetail = ({ id, name }) => {
     <div className="word-detail">
       <Card>
         <CardBody>
-          <CardTitle className="text-success" tag="h4">
+          <CardTitle className="detail" tag="h4">
             {name}
           </CardTitle>
         </CardBody>

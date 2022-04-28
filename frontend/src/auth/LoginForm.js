@@ -64,19 +64,21 @@ const LoginForm = ({ login }) => {
                             : null} 
 
                         <button 
-                            className="btn btn-primary float-right"
+                            className="text-center"
                             onSubmit={handleSubmit} 
                         >
                             Login    
                         </button>   
                     </form>
-                    <div className="text-center">
-                        <Link to="/signup">
-                            <button>Create An Account</button>
-                        </Link>
-                    </div>
+                  
                     </div>  
                 </div>
+
+            </div>
+            <div className="col text-center my-2">
+                <span>
+                    Don't have an account? <Link to="/signup">Register</Link>
+                </span>
             </div>
 
         </div>

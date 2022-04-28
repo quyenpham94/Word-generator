@@ -10,7 +10,7 @@ import {
   Collapse,
 } from "reactstrap";
 
-// import "./Navbar.css";
+import "./NavBar.css";
 
 /** Shows up on every page.
  *
@@ -34,29 +34,29 @@ const NavBar = ({ logout }) => {
   const loggedInNav = () => {
     return (
             <ul className="navbar-nav ml-auto">
-                <Navbar color="success" dark expand="md" light>
+                <Navbar className="nav" dark expand="md" light>
                 <NavbarBrand href="/">WORD GENERATOR</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
-                <li className="nav-item mr-4">
+                <NavItem>
                     <NavLink className="nav-link" href="/">
                         Home
                     </NavLink>
-                </li>
-                <li className="nav-item mr-4">
+                </NavItem>
+                <NavItem>
                     <NavLink className="nav-link" href="/categories">
                         Categories
                     </NavLink>
-                </li>
-                <li className="nav-item mr-4">
+                </NavItem>
+                <NavItem>
                     <NavLink className="nav-link" href="/profile">
                         Profile
                     </NavLink>
-                </li>
-                <li className="nav-item mr-4">
+                </NavItem>
+                <NavItem>
                     <NavLink className="nav-link" href="/" onClick={logout}>
                         Log out {currentUser.first_name || currentUser.username}
                     </NavLink>
-                </li>
+                </NavItem>
                 </Navbar>
             </ul>
     );
@@ -64,7 +64,7 @@ const NavBar = ({ logout }) => {
   const loggedOutNav = () => {
     return (
       <div>
-        <Navbar color="success" dark expand="md" light>
+        <Navbar className="nav" dark expand="md" light>
           <NavbarBrand href="/">WORD GENERATOR</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>

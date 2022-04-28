@@ -35,7 +35,7 @@ const CategoryList = () => {
                     ))}
                 </div>
             ) : (
-                <p className="">Sorry, no objects were found</p>
+                <p className="text-center">Sorry, no objects were found</p>
             )}
         </div>
     );
