@@ -7,7 +7,7 @@ import Message from "./Message";
  *
  * On submission:
  * - calls signup function prop
- * - redirects to /companies route
+ * - redirects to /categories route
  *
  * Routed as /signup
  *
@@ -75,7 +75,7 @@ const SignupForm = ({ signup }) => {
     e.preventDefault();
     let res = await signup(formData);
     if (res.success) {
-      history.push("/companies");
+      history.push("/categories");
     } else {
       setErrors(res.errors);
     }
