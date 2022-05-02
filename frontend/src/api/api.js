@@ -88,6 +88,13 @@ class WordGeneratorApi {
     let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
   }
+
+  /** Create New Category */
+  
+  static async newcategory(data) {
+    let res = await this.request(`/categories`, data, "post");
+    return res.token;
+  }
 }
 
 export default WordGeneratorApi;
