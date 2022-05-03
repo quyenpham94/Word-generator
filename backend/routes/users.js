@@ -11,6 +11,7 @@ const User = require("../models/user");
 const { createToken } = require("../helpers/tokens");
 const userNewSchema = require("../schemas/userNew.json");
 const userUpdateSchema = require("../schemas/userUpdate.json");
+const categoryUpdateSchema = require("../schemas/categoryUpdate.json");
 
 const router = express.Router();
 
@@ -141,6 +142,38 @@ router.post(
       const wordId = +req.params.id;
       await User.viewWord(req.params.username, wordId);
       return res.json({ viewed: wordId });
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
+
+
+// User can post their own list of words
+
+/** PATCH /[username] { user } => { user }
+ *
+ * Data can include:
+ *   { firstName, lastName, password, email }
+ *
+ * Returns { username, firstName, lastName, email, isAdmin }
+ *
+ * Authorization required: admin or same-user-as-:username
+ **/
+
+router.patch(
+  "/:username/category",
+  ensureCorrectUserOrAdmin,
+  async function (req, res, next) {
+    try {
+      const validator = jsonschema.validate(req.body, categoryUpdateSchema);
+      if (!validator.valid) {
+        const errs = validator.errors.map((e) => e.stack);
+        throw new BadRequestError(errs);
+      }
+
+      const user = await User.update(req.params.username, req.body);
+      return res.json({ user });
     } catch (err) {
       return next(err);
     }
