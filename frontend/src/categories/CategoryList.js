@@ -3,6 +3,7 @@ import WordGeneratorApi from "../api/api";
 import CategoryCard  from "./CategoryCard";
 import LoadingSpinner from "../common/LoadingSpinner";
 import SearchForm from "../common/SearchForm";
+import { Link } from "react-router-dom";
 
 const CategoryList = () => {
     const [categories, setCategories] = useState(null);
@@ -23,6 +24,9 @@ const CategoryList = () => {
             <h3 className="category-list">
                 Which object would you like?
             </h3>
+            <div>
+                <button> <Link to="/category"/>Create New Category</button>
+            </div>
             <SearchForm searchFor={search} />
             {categories.length ? (
                 <div>

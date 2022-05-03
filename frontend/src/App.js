@@ -76,7 +76,21 @@ function App() {
         } catch (errors) {
             return { success: false, errors }
         }
-    }// checks if an item has been viewed
+    }
+
+    // handles post new category
+    async function newcategory(data) {
+        try {
+            let token = await WordGeneratorApi.newcategory(data);
+            setToken(token);
+            return { success: true };
+        } catch (errors) {
+            console.error("attempt failed", errors);
+            return { success: false, errors };
+        }
+    }
+    
+    // checks if an item has been viewed
     const hasViewed = (id) => {
         if (hasViewed(id)) return;
         WordGeneratorApi.view(currentUser.username, id);
@@ -92,7 +106,7 @@ function App() {
                     value={{ currentUser, setCurrentUser, hasViewed }}
                 >
                     <NavBar logout={logout} />
-                    <Routes login={login} sign={signup} />
+                    <Routes login={login} sign={signup} newCategory={newcategory} />
                 </UserContext.Provider>
             </BrowserRouter>
         </div>

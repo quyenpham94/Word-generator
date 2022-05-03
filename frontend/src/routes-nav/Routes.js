@@ -8,13 +8,14 @@ import SignupForm from "../auth/SignupForm";
 import ProfileForm from "../profiles/ProfileForm";
 import PrivateRoute from "./PrivateRoute";
 import ProtectingRoute from "./ProtectingRoute";
+import NewCategoryForm from "../auth/NewCategoryForm";
 
 /** Routes are wrapped by <Private> would only visible when logged in
  *
  * Invalid links will be redirected to Home page.
  */
 
-const Routes = ({ login, signup }) => {
+const Routes = ({ login, signup, newcategory }) => {
     return (
         <div>
             <Switch>
@@ -28,6 +29,7 @@ const Routes = ({ login, signup }) => {
                     <SignupForm signup={signup} />
                 </ProtectingRoute>
 
+
                 <PrivateRoute exact path="/categories">
                     <CategoryList />
                 </PrivateRoute>
@@ -36,6 +38,9 @@ const Routes = ({ login, signup }) => {
                 </PrivateRoute>
                 <PrivateRoute exact path="/profile">
                     <ProfileForm />
+                </PrivateRoute>
+                <PrivateRoute exact path="/category">
+                    <NewCategoryForm newcategory={newcategory} />
                 </PrivateRoute>
 
                 <Redirect to="/" />

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link, useHistory } from  "react-router-dom";
+import { useHistory } from  "react-router-dom";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import Message from "./Message";
 
-const NewCategoryForm = () => {
+const NewCategoryForm = ({ newcategory }) => {
     const [formData, setFormData] = useState({
         handle: "",
         name: "",
@@ -51,7 +51,7 @@ const NewCategoryForm = () => {
         e.preventDefault();
         let res = await newcategory(formData);
         if (res.success) {
-            history.push("/categories");
+            history.push("/category");
         } else {
             setErrors(res.errors);
         }
@@ -119,7 +119,7 @@ const NewCategoryForm = () => {
                 </FormGroup>{" "}
                 {errors.length ? <Message type="danger" messages={errors} /> : null}
                 <div className="text-center">
-                    <button color="success" disables={!isValid}>
+                    <button color="success" disables="false">
                         New Category
                     </button>
                 </div>
