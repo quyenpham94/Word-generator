@@ -11,6 +11,8 @@ const { createToken } = require("../helpers/tokens");
 const userAuthSchema = require("../schemas/userAuth.json");
 const userRegisterSchema = require("../schemas/userRegister.json");
 const { BadRequestError } = require("../expressError");
+const categoryNewSchema = require("../schemas/categoryNew.json");
+const Category = require("../models/category");
 
 /** POST /auth/token:  { username, password } => { token }
  *
@@ -57,6 +59,33 @@ router.post("/register", async function (req, res, next) {
         const token = createToken(newUser);
         return res.status(201).json({ token });
     } catch (err) {
+        return next(err);
+    }
+});
+
+// to create new category
+
+/** POST /auth/newcategory:   { newcategory } => { token }
+ *
+ * category must include { handle, name, description }
+ *
+ * Returns JWT token which can be used to authenticate further requests.
+ *
+ * Authorization required: none
+ */
+
+router.post("/newcategoy", async function (req, res, next) {
+    try {
+        const validator = jsonschema.validate(req.body, categoryNewSchema);
+        if(!validator.valid) {
+            const errs = validator.errors.map(e => e.stack);
+            throw new BadRequestError(errs);
+        }
+
+        const newCategory = await Category.create({ ...req.body, isAdmin: false });
+        const token = createToken(newCategory);
+        return res.status(201).json({ token });
+    } catch(err) {
         return next(err);
     }
 });

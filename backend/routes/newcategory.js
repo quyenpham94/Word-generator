@@ -6,16 +6,16 @@ const jsonschema = require("jsonschema");
 const express = require("express");
 
 const { BadRequestError } = require("../expressError");
-const { ensureAdmin } = require("../middleware/auth");
+const { ensureCorrectUserOrAdmin } = require("../middleware/auth");
 const Category = require("../models/category");
-
+const { createToken } = require("../helpers/tokens");
 const categoryNewSchema = require("../schemas/categoryNew.json");
 const categoryUpdateSchema = require("../schemas/categoryUpdate.json");
 const categorySearchSchema = require("../schemas/categorySearch.json");
 
 const router = new express.Router();
 
-/** POST / { category } =>  { category }
+/** POST / { newcategory } =>  { newcategory }
  *
  * category should be { handle, name, description }
  *
@@ -24,15 +24,16 @@ const router = new express.Router();
  * Authorization required: admin
  */
 
-router.post("/", ensureAdmin, async function (req, res, next) {
+router.post("/", async function (req, res, next) {
   try {
     const validator = jsonschema.validate(req.body, categoryNewSchema);
     if (!validator.valid) {
-      const errs = validator.errors.map((e) => e.stack);
+      const errs = validator.errors.map(e => e.stack);
       throw new BadRequestError(errs);
     }
 
     const category = await Category.create(req.body);
+    // const token = createToken(category); // do we need token for each category???
     return res.status(201).json({ category });
   } catch (err) {
     return next(err);
@@ -48,7 +49,7 @@ router.post("/", ensureAdmin, async function (req, res, next) {
  * Authorization required: none
  */
 
-router.get("/", async function (req, res, next) {
+router.get("/", ensureCorrectUserOrAdmin, async function (req, res, next) {
   const q = req.query;
 
   try {
@@ -73,7 +74,7 @@ router.get("/", async function (req, res, next) {
  * Authorization required: none
  */
 
-router.get("/:handle", async function (req, res, next) {
+router.get("/:handle", ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     const category = await Category.get(req.params.handle);
     return res.json({ category });
@@ -93,7 +94,7 @@ router.get("/:handle", async function (req, res, next) {
  * Authorization required: admin
  */
 
-router.patch("/:handle", ensureAdmin, async function (req, res, next) {
+router.patch("/:handle", ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     const validator = jsonschema.validate(req.body, categoryUpdateSchema);
     if (!validator.valid) {
@@ -113,7 +114,7 @@ router.patch("/:handle", ensureAdmin, async function (req, res, next) {
  * Authorization: admin
  */
 
-router.delete("/:handle", ensureAdmin, async function (req, res, next) {
+router.delete("/:handle", ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     await Category.remove(req.params.handle);
     return res.json({ deleted: req.params.handle });
@@ -121,24 +122,5 @@ router.delete("/:handle", ensureAdmin, async function (req, res, next) {
     return next(err);
   }
 });
-
-router.patch(
-  "/newcategory",
-  ensureCorrectUserOrAdmin,
-  async function (req, res, next) {
-    try {
-      const validator = jsonschema.validate(req.body, categoryUpdateSchema);
-      if (!validator.valid) {
-        const errs = validator.errors.map((e) => e.stack);
-        throw new BadRequestError(errs);
-      }
-
-      const user = await Category.update(req.params.username, req.body);
-      return res.json({ user });
-    } catch (err) {
-      return next(err);
-    }
-  }
-);
 
 module.exports = router;

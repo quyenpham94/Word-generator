@@ -6,14 +6,19 @@
       "name": {
         "type": "string",
         "minLength": 1,
-        "maxLength": 30
+        "maxLength": 50
       },
       "handle": {
         "type": "string",
         "minLength": 1,
-        "maxLength": 30
+        "maxLength": 50
+      },
+      "description": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
       }
     },
     "additionalProperties": false,
-    "required": ["name", "handle"]
+    "required": ["name", "handle", "description"]
   }

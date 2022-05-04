@@ -149,35 +149,35 @@ router.post(
 );
 
 
-// User can post their own list of words
+// // User can post their own list of words
 
-/** PATCH /[username] { user } => { user }
- *
- * Data can include:
- *   { firstName, lastName, password, email }
- *
- * Returns { username, firstName, lastName, email, isAdmin }
- *
- * Authorization required: admin or same-user-as-:username
- **/
+// /** PATCH /[username] { user } => { user }
+//  *
+//  * Data can include:
+//  *   { firstName, lastName, password, email }
+//  *
+//  * Returns { username, firstName, lastName, email, isAdmin }
+//  *
+//  * Authorization required: admin or same-user-as-:username
+//  **/
 
-router.patch(
-  "/:username/category",
-  ensureCorrectUserOrAdmin,
-  async function (req, res, next) {
-    try {
-      const validator = jsonschema.validate(req.body, categoryUpdateSchema);
-      if (!validator.valid) {
-        const errs = validator.errors.map((e) => e.stack);
-        throw new BadRequestError(errs);
-      }
+// router.patch(
+//   "/newcategory",
+//   ensureCorrectUserOrAdmin,
+//   async function (req, res, next) {
+//     try {
+//       const validator = jsonschema.validate(req.body, categoryUpdateSchema);
+//       if (!validator.valid) {
+//         const errs = validator.errors.map((e) => e.stack);
+//         throw new BadRequestError(errs);
+//       }
 
-      const user = await User.update(req.params.username, req.body);
-      return res.json({ user });
-    } catch (err) {
-      return next(err);
-    }
-  }
-);
+//       const user = await User.update(req.params.username, req.body);
+//       return res.json({ user });
+//     } catch (err) {
+//       return next(err);
+//     }
+//   }
+// );
 
 module.exports = router;

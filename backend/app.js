@@ -12,6 +12,8 @@ const authRoutes = require("./routes/auth");
 const categoriesRoutes = require("./routes/categories");
 const usersRoutes = require("./routes/users");
 const wordsRoutes = require("./routes/words");
+// to create new category
+// const newcategoryRoutes = require("./routes/newcategory");
 
 const morgan = require("morgan");
 
@@ -26,6 +28,8 @@ app.use("/auth", authRoutes);
 app.use("/categories", categoriesRoutes);
 app.use("/users", usersRoutes);
 app.use("/words", wordsRoutes);
+// to create new category
+app.use("/newcategory", authRoutes);
 
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
