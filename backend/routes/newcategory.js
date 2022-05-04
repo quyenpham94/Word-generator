@@ -8,7 +8,6 @@ const express = require("express");
 const { BadRequestError } = require("../expressError");
 const { ensureCorrectUserOrAdmin } = require("../middleware/auth");
 const Category = require("../models/category");
-const { createToken } = require("../helpers/tokens");
 const categoryNewSchema = require("../schemas/categoryNew.json");
 const categoryUpdateSchema = require("../schemas/categoryUpdate.json");
 const categorySearchSchema = require("../schemas/categorySearch.json");

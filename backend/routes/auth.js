@@ -74,7 +74,7 @@ router.post("/register", async function (req, res, next) {
  * Authorization required: none
  */
 
-router.post("/newcategoy", async function (req, res, next) {
+router.post("/newcategory", async function (req, res, next) {
     try {
         const validator = jsonschema.validate(req.body, categoryNewSchema);
         if(!validator.valid) {

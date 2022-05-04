@@ -6,7 +6,7 @@ const jsonschema = require("jsonschema");
 const express = require("express");
 
 const { BadRequestError } = require("../expressError");
-const { ensureAdmin } = require("../middleware/auth");
+const { ensureAdmin, ensureCorrectUserOrAdmin } = require("../middleware/auth");
 const Category = require("../models/category");
 
 const categoryNewSchema = require("../schemas/categoryNew.json");
@@ -32,8 +32,8 @@ router.post("/", ensureAdmin, async function (req, res, next) {
       throw new BadRequestError(errs);
     }
 
-    const category = await Category.create(req.body);
-    return res.status(201).json({ category });
+    const newcategory = await Category.create(req.body);
+    return res.status(201).json({ newcategory });
   } catch (err) {
     return next(err);
   }
@@ -121,24 +121,5 @@ router.delete("/:handle", ensureAdmin, async function (req, res, next) {
     return next(err);
   }
 });
-
-router.patch(
-  "/newcategory",
-  ensureCorrectUserOrAdmin,
-  async function (req, res, next) {
-    try {
-      const validator = jsonschema.validate(req.body, categoryUpdateSchema);
-      if (!validator.valid) {
-        const errs = validator.errors.map((e) => e.stack);
-        throw new BadRequestError(errs);
-      }
-
-      const user = await Category.update(req.params.username, req.body);
-      return res.json({ user });
-    } catch (err) {
-      return next(err);
-    }
-  }
-);
 
 module.exports = router;
