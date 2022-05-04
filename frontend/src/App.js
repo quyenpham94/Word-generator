@@ -106,7 +106,7 @@ function App() {
                     value={{ currentUser, setCurrentUser, hasViewed }}
                 >
                     <NavBar logout={logout} />
-                    <Routes login={login} sign={signup} newCategory={newcategory} />
+                    <Routes login={login} signup={signup} newcategory={newcategory} />
                 </UserContext.Provider>
             </BrowserRouter>
         </div>

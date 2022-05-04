@@ -11,40 +11,7 @@ const NewCategoryForm = ({ newcategory }) => {
     });
 
     const [errors, setErrors] = useState({});
-    // const [isValid, setIsValid] = useState(true);
-    // const [touched, setTouched] = useState({});
     const history = useHistory();
-
-
-  /* validations array contains a function which
-   * returns an obj w/ an error message
-   * or something elses if there's no error.
-   */
-    // const validations = [
-    //     ({ handle }) => 
-    //         isRequired(handle) || { handle: "Handle is required."},
-    //     ({ name }) => 
-    //         isRequired(name) || { handle: "Name is required."},
-    //     ({ description }) => 
-    //         isRequired(description) || { handle: "Description is required."},
-    // ];
-
-    // // function for validations
-    // const isRequired = (value) => {
-    //     return value != null && value.trirm().length > 0;
-    // };
-
-    // // returns the errors and isValid flag
-    // const validate = (validations, data) => {
-    //     const errors = validations
-    //         .map((validation) => validation(data))
-    //         .filter((validation) => typeof validation === "object");
-
-    //     return {
-    //         isValid: errors.length === 0,
-    //         errors: errors.reduce((errors, error) => ({ ...errors, ...error }), {}),
-    //     };
-    // };
 
     // handles form submit
     async function handleSubmit(e) {
@@ -60,13 +27,7 @@ const NewCategoryForm = ({ newcategory }) => {
     // updates form data field
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // const newData = { ...formData, [name]: value };
-        // const { isValid, errors } = validate(validations, newData);
-        // setFormData(newData);
         setFormData(data => ({...data, [name]: value }));
-        // setIsValid(isValid);
-        // setErrors(errors);
-        // setTouched({ ...touched, [name]: true });
     };
 
     return (
@@ -84,9 +45,6 @@ const NewCategoryForm = ({ newcategory }) => {
                         required
                     />
                     <Label for="handle">Handle</Label>
-                    {/* {touched.handle && errors.handle && (
-                        <p className="text-danger">{errors.handle}</p> 
-                    )} */}
                 </FormGroup>{" "}
                 <FormGroup floating>
                     <Input
@@ -99,9 +57,6 @@ const NewCategoryForm = ({ newcategory }) => {
                         required
                     />
                     <Label for="name">Name</Label>
-                    {/* {touched.name && errors.name && (
-                        <p className="text-danger">{errors.name}</p> 
-                    )} */}
                 </FormGroup>{" "}
                 <FormGroup floating>
                     <Input
@@ -114,9 +69,6 @@ const NewCategoryForm = ({ newcategory }) => {
                         required
                     />
                     <Label for="description">Description</Label>
-                    {/* {touched.description && errors.description && (
-                        <p className="text-danger">{errors.description}</p> 
-                    )} */}
                 </FormGroup>{" "}
                 {errors.length ? <Message type="danger" messages={errors} /> : null}
                 <div className="text-center">

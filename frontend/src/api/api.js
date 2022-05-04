@@ -92,7 +92,7 @@ class WordGeneratorApi {
   /** Create New Category */
   
   static async newcategory(data) {
-    let res = await this.request(`/auth/category`, data, "post");
+    let res = await this.request(`auth/newcategory`, data, "post");
     return res.token;
   }
 }

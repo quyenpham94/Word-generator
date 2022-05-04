@@ -25,7 +25,7 @@ const CategoryList = () => {
                 Which object would you like?
             </h3>
             <div>
-                <button> <Link to="/category"/>Create New Category</button>
+                <button><Link to="/newcategory">Create New</Link></button>
             </div>
             <SearchForm searchFor={search} />
             {categories.length ? (

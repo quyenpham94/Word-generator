@@ -71,7 +71,7 @@ const SignupForm = ({ signup }) => {
   };
 
   // handles form submit
-  async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     let res = await signup(formData);
     if (res.success) {

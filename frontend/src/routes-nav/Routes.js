@@ -39,7 +39,7 @@ const Routes = ({ login, signup, newcategory }) => {
                 <PrivateRoute exact path="/profile">
                     <ProfileForm />
                 </PrivateRoute>
-                <PrivateRoute exact path="/category">
+                <PrivateRoute exact path="/newcategory">
                     <NewCategoryForm newcategory={newcategory} />
                 </PrivateRoute>
 
