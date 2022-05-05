@@ -5,6 +5,8 @@
 const jsonschema = require("jsonschema");
 
 const User = require("../models/user");
+const Category = require("../models/category");
+const Word = require("../models/word");
 const express = require("express");
 const router = new express.Router();
 const { createToken } = require("../helpers/tokens");
@@ -12,7 +14,8 @@ const userAuthSchema = require("../schemas/userAuth.json");
 const userRegisterSchema = require("../schemas/userRegister.json");
 const { BadRequestError } = require("../expressError");
 const categoryNewSchema = require("../schemas/categoryNew.json");
-const Category = require("../models/category");
+const wordNewSchema = require("../schemas/wordNew.json");
+
 
 /** POST /auth/token:  { username, password } => { token }
  *
@@ -84,6 +87,22 @@ router.post("/newcategory", async function (req, res, next) {
 
         const newCategory = await Category.create({ ...req.body, isAdmin: false });
         const token = createToken(newCategory);
+        return res.status(201).json({ token });
+    } catch(err) {
+        return next(err);
+    }
+});
+
+router.post("/addingwords", async function (req, res, next) {
+    try {
+        const validator = jsonschema.validate(req.body, wordNewSchema);
+        if(!validator.valid) {
+            const errs = validator.errors.map(e => e.stack);
+            throw new BadRequestError(errs);
+        }
+
+        const addingWords = await Word.create({ ...req.body, isAdmin: false });
+        const token = createToken(addingWords);
         return res.status(201).json({ token });
     } catch(err) {
         return next(err);
