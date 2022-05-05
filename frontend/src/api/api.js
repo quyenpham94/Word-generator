@@ -95,6 +95,14 @@ class WordGeneratorApi {
     let res = await this.request(`auth/newcategory`, data, "post");
     return res.token;
   }
+
+  
+  /** Adding New Words */
+  
+  static async addingwords(data) {
+    let res = await this.request(`auth/addingwords`, data, "post");
+    return res.token;
+  }
 }
 
 export default WordGeneratorApi;

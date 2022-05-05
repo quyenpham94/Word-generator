@@ -9,13 +9,14 @@ import ProfileForm from "../profiles/ProfileForm";
 import PrivateRoute from "./PrivateRoute";
 import ProtectingRoute from "./ProtectingRoute";
 import NewCategoryForm from "../auth/NewCategoryForm";
+import AddingWordsForm from "../auth/AddingWordsForm";
 
 /** Routes are wrapped by <Private> would only visible when logged in
  *
  * Invalid links will be redirected to Home page.
  */
 
-const Routes = ({ login, signup, newcategory }) => {
+const Routes = ({ login, signup, newcategory, addingwords }) => {
     return (
         <div>
             <Switch>
@@ -41,6 +42,9 @@ const Routes = ({ login, signup, newcategory }) => {
                 </PrivateRoute>
                 <PrivateRoute exact path="/newcategory">
                     <NewCategoryForm newcategory={newcategory} />
+                </PrivateRoute>
+                <PrivateRoute exact path="/addingwords">
+                    <AddingWordsForm addingwords={addingwords} />
                 </PrivateRoute>
 
                 <Redirect to="/" />

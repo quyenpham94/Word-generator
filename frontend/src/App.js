@@ -89,6 +89,17 @@ function App() {
             return { success: false, errors };
         }
     }
+
+    async function addingwords(data) {
+        try {
+            let token = await WordGeneratorApi.addingwords(data);
+            setToken(token);
+            return { success: true };
+        } catch (errors) {
+            console.error("attempt failed", errors);
+            return { success: false, errors };
+        }
+    }
     
     // checks if an item has been viewed
     const hasViewed = (id) => {
@@ -106,7 +117,7 @@ function App() {
                     value={{ currentUser, setCurrentUser, hasViewed }}
                 >
                     <NavBar logout={logout} />
-                    <Routes login={login} signup={signup} newcategory={newcategory} />
+                    <Routes login={login} signup={signup} newcategory={newcategory} addingwords={addingwords} />
                 </UserContext.Provider>
             </BrowserRouter>
         </div>
