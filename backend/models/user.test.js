@@ -232,7 +232,7 @@ describe("remove", function () {
 
 /************************************** viewWord */
 
-describe("viewWord", function () {
+describe("Word", function () {
   test("works", async function () {
     await User.viewWord("u1", testWordIds[1]);
 
@@ -258,7 +258,7 @@ describe("viewWord", function () {
 
   test("not found if no such user", async function () {
     try {
-      await User.viewWord("nope", testWordIds[0], "viewed");
+      await User.viewWord("nope", testWordIds[0], "viewd");
       fail();
     } catch (err) {
       expect(err instanceof NotFoundError).toBeTruthy();

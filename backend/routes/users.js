@@ -127,7 +127,7 @@ router.delete(
 
 /** POST /[username]/words/[id]  { state } => { view }
  *
- * Returns {"viewed": wordId}
+ * Returns {"viewd": wordId}
  *
  * Authorization required: admin or same-user-as-:username
  * */

@@ -382,14 +382,14 @@ describe("POST /users/:username/words/:id", function () {
     const resp = await request(app)
       .post(`/users/u1/words/${testWordIds[1]}`)
       .set("authorization", `Bearer ${adminToken}`);
-    expect(resp.body).toEqual({ viewed: testWordIds[1] });
+    expect(resp.body).toEqual({ viewd: testWordIds[1] });
   });
 
   test("works for same user", async function () {
     const resp = await request(app)
       .post(`/users/u1/words/${testWordIds[1]}`)
       .set("authorization", `Bearer ${u1Token}`);
-    expect(resp.body).toEqual({ viewed: testWordIds[1] });
+    expect(resp.body).toEqual({ viewd: testWordIds[1] });
   });
 
   test("unauth for others", async function () {

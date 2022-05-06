@@ -6,7 +6,7 @@ const jsonschema = require("jsonschema");
 
 const express = require("express");
 const { BadRequestError } = require("../expressError");
-const { ensureAdmin } = require("../middleware/auth");
+const { ensureAdmin, ensureCorrectUserOrAdmin } = require("../middleware/auth");
 const Word = require("../models/word");
 const wordNewSchema = require("../schemas/wordNew.json");
 const wordUpdateSchema = require("../schemas/wordUpdate.json");
@@ -109,7 +109,7 @@ router.patch("/:id", ensureAdmin, async function (req, res, next) {
  * Authorization required: admin
  */
 
-router.delete("/:id", ensureAdmin, async function (req, res, next) {
+router.delete("/:id", ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     await Word.remove(req.params.id);
     return res.json({ deleted: +req.params.id });

@@ -15,7 +15,7 @@ const userRegisterSchema = require("../schemas/userRegister.json");
 const { BadRequestError } = require("../expressError");
 const categoryNewSchema = require("../schemas/categoryNew.json");
 const wordNewSchema = require("../schemas/wordNew.json");
-
+const { ensureLoggedIn } = require("../middleware/auth");
 
 /** POST /auth/token:  { username, password } => { token }
  *
@@ -77,7 +77,7 @@ router.post("/register", async function (req, res, next) {
  * Authorization required: none
  */
 
-router.post("/newcategory", async function (req, res, next) {
+router.post("/newcategory",  ensureLoggedIn, async function (req, res, next) {
     try {
         const validator = jsonschema.validate(req.body, categoryNewSchema);
         if(!validator.valid) {
@@ -85,7 +85,7 @@ router.post("/newcategory", async function (req, res, next) {
             throw new BadRequestError(errs);
         }
 
-        const newCategory = await Category.create({ ...req.body, isAdmin: false });
+        const newCategory = await Category.create({ ...req.body });
         const token = createToken(newCategory);
         return res.status(201).json({ token });
     } catch(err) {
@@ -93,7 +93,7 @@ router.post("/newcategory", async function (req, res, next) {
     }
 });
 
-router.post("/addingwords", async function (req, res, next) {
+router.post("/addingwords",  ensureLoggedIn, async function (req, res, next) {
     try {
         const validator = jsonschema.validate(req.body, wordNewSchema);
         if(!validator.valid) {
@@ -101,7 +101,7 @@ router.post("/addingwords", async function (req, res, next) {
             throw new BadRequestError(errs);
         }
 
-        const addingWords = await Word.create({ ...req.body, isAdmin: false });
+        const addingWords = await Word.create({ ...req.body });
         const token = createToken(addingWords);
         return res.status(201).json({ token });
     } catch(err) {
