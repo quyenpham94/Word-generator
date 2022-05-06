@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import ProtectingRoute from "./ProtectingRoute";
 import NewCategoryForm from "../auth/NewCategoryForm";
 import AddingWordsForm from "../auth/AddingWordsForm";
+// import WordCard from "../categories/WordCard";
 
 /** Routes are wrapped by <Private> would only visible when logged in
  *

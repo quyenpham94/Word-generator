@@ -17,7 +17,7 @@ const WordDetail = ({ id, name }) => {
     <div className="word-detail">
       <Card>
         <CardBody>
-          <CardTitle className="detail" tag="h4">
+          <CardTitle className="detail" tag="h4" id={id}>
             {name}
           </CardTitle>
         </CardBody>

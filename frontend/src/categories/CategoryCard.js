@@ -9,6 +9,7 @@ import { Card, CardBody, CardTitle } from "reactstrap";
 */
 
 const CategoryCard = ({ name, handle }) => {
+    console.log(name)
     return (
         <div className="category-card"> 
             <Link className="text-deccoration-none" to={`/categories/${handle}`}>

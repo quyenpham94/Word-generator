@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from  "react-router-dom";
 import { Form, FormGroup, Input, Label } from "reactstrap";
-import { Link } from "react-router-dom";
 import Message from "./Message";
 
 const NewCategoryForm = ({ newcategory }) => {
@@ -74,9 +73,7 @@ const NewCategoryForm = ({ newcategory }) => {
                 {errors.length ? <Message type="danger" messages={errors} /> : null}
                 <div className="text-center">
                     <button type="submit" onSubmit={handleSubmit}>
-                        <Link to="/addingwords">
                         New Category
-                        </Link>
                     </button>
                 </div>
 

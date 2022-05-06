@@ -90,6 +90,8 @@ function App() {
         }
     }
 
+
+    // handles add new words into each category
     async function addingwords(data) {
         try {
             let token = await WordGeneratorApi.addingwords(data);

@@ -3,12 +3,13 @@ import { useHistory } from  "react-router-dom";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import Message from "./Message";
 
-const AddingWordsForm = ({ addingwords, newcategory }) => {
+const AddingWordsForm = ({ addingwords }) => {
     const [formData, setFormData] = useState({
         name: "",
-        categoryHandle: "dogs",
+        categoryHandle: "",
     });
 
+    
     const [errors, setErrors] = useState({});
     const history = useHistory();
 
@@ -17,7 +18,7 @@ const AddingWordsForm = ({ addingwords, newcategory }) => {
         e.preventDefault();
         let res = await addingwords(formData);
         if (res.success) {
-            history.push("/categories");
+            history.push("/addingwords");
         } else {
             setErrors(res.errors);
         }
@@ -25,8 +26,8 @@ const AddingWordsForm = ({ addingwords, newcategory }) => {
 
     // updates form data field
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(data => ({...data, [name]: value }));
+        const { name, value, categoryHandle, value1 } = e.target;
+        setFormData(data => ({...data, [name]: value, [categoryHandle]: value1 }));
     };
 
     return (
@@ -34,17 +35,30 @@ const AddingWordsForm = ({ addingwords, newcategory }) => {
             <h3>New Words For </h3>
             <Form className="" onSubmit={handleSubmit}>
                 <FormGroup floating>
-                    <Input
-                        id="word1"
-                        name="name"
-                        placeholder="Word1"
-                        value={formData.word1}
+                    <Input  
+                        id="categoryHandle"
+                        name="categoryHandle"
+                        placeholder="Handle of New Category"
+                        value1={formData.categoryHandle}
                         onChange={handleChange}
                         type="text"
                     />
-                    <Label for="word1">Word 1</Label>
-                </FormGroup>{" "} 
+                    <Label for="categoryHandle">Category Handle</Label>
+                </FormGroup>{" "}
+            </Form>
+            <Form className="" onSubmit={handleSubmit}>
                 <FormGroup floating>
+                    <Input
+                        id="word"
+                        name="name"
+                        placeholder="Word"
+                        value={formData.word}
+                        onChange={handleChange}
+                        type="text"
+                    />
+                    <Label for="word">Word</Label>
+                </FormGroup>{" "} 
+                {/* <FormGroup floating>
                     <Input
                         id="word2"
                         name="name"
@@ -127,7 +141,6 @@ const AddingWordsForm = ({ addingwords, newcategory }) => {
                         name="name"
                         placeholder="Word9"
                         value={formData.word9}
-                        onChange={handleChange}
                         type="text"
                     />
                     <Label for="word9">Word 9</Label>
@@ -138,11 +151,10 @@ const AddingWordsForm = ({ addingwords, newcategory }) => {
                         name="name"
                         placeholder="Word10"
                         value={formData.word10}
-                        onChange={handleChange}
                         type="text"
                     />
                     <Label for="word10">Word 10</Label>
-                </FormGroup>{" "}
+                </FormGroup>{" "} */}
                 {errors.length ? <Message type="danger" messages={errors} /> : null}
                 <div className="text-center">
                     <button type="submit" onSubmit={handleSubmit}>
