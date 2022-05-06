@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import ProtectingRoute from "./ProtectingRoute";
 import NewCategoryForm from "../auth/NewCategoryForm";
 import AddingWordsForm from "../auth/AddingWordsForm";
+import LearnPage from "../homepage/LearnPage";
 // import WordCard from "../categories/WordCard";
 
 /** Routes are wrapped by <Private> would only visible when logged in
@@ -24,6 +25,10 @@ const Routes = ({ login, signup, newcategory, addingwords }) => {
                 <Route exact path="/">
                     <Homepage login={login}/>
                 </Route>
+                <Route exact path="/rule">
+                    <LearnPage />
+                </Route>
+
                 <ProtectingRoute exact path="/login">
                     <LoginForm login={login} />
                 </ProtectingRoute>

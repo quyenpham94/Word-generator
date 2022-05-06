@@ -103,6 +103,21 @@ class WordGeneratorApi {
     let res = await this.request(`auth/addingwords`, data, "post");
     return res.token;
   }
+
+ 
+  /** Remove a category */
+
+  static async remove(handle, data) { 
+    let res = await this.request(`categories/${handle}`, data, "delete");
+    return res.token;
+  }
+
+  /** Update a category */
+  static async update(handle, data) {
+    let res = await this.request(`categories/${handle}`, data, "patch");
+    return res.token;
+  }
+
 }
 
 export default WordGeneratorApi;

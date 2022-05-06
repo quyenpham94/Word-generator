@@ -17,7 +17,7 @@ function App() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [currentUser, setCurrentUser] = useState(null);
     const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
-    const [viewIds, setViewIds] = useState(new Set([]));
+    const [favoritesIds, setFavoriteIds] = useState(new Set([]));
 
     // Load user info from API. Until a user is logged in and they have a token,
     // this should not run. It only needs to re-run when a user logs out, so
@@ -103,11 +103,14 @@ function App() {
         }
     }
     
-    // checks if an item has been viewed
-    const hasViewed = (id) => {
-        if (hasViewed(id)) return;
-        WordGeneratorApi.view(currentUser.username, id);
-        setViewIds(new Set([...viewIds, id]));
+    const hasFavorited = (id) => {
+        return favoritesIds.has(id);
+    }
+
+    const favorited = (id) => {
+        if (favorited(id)) return;
+        WordGeneratorApi.favorite(currentUser.username, id);
+        setFavoriteIds(new Set([...favoritesIds, id]));
     };
 
     if (!isLoaded) return <LoadingSpinner />;
@@ -116,7 +119,7 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <UserContext.Provider   
-                    value={{ currentUser, setCurrentUser, hasViewed }}
+                    value={{ currentUser, setCurrentUser, hasFavorited, favorited }}
                 >
                     <NavBar logout={logout} />
                     <Routes login={login} signup={signup} newcategory={newcategory} addingwords={addingwords} />

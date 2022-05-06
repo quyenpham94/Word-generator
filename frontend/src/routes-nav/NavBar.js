@@ -43,6 +43,11 @@ const NavBar = ({ logout }) => {
                     </NavLink>
                 </NavItem>
                 <NavItem>
+                    <NavLink className="nav-link" href="/rule">
+                        Rule
+                    </NavLink>
+                </NavItem>
+                <NavItem>
                     <NavLink className="nav-link" href="/categories">
                         Categories
                     </NavLink>
@@ -73,8 +78,10 @@ const NavBar = ({ logout }) => {
                 <NavLink href="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/#features">Features</NavLink>
-              </NavItem>
+                    <NavLink className="nav-link" href="/rule">
+                        Rule
+                    </NavLink>
+                </NavItem>
               <NavItem>
                 <NavLink href="/#about">About</NavLink>
               </NavItem>

@@ -1,25 +1,15 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-
-const CallAction = ({ login }) => {
-    const history = useHistory();
-
-    async function handleSubmit(e) {
-        e.preventDefault();
-        await login({
-            username: "testuser",
-            password: "password",
-        });
-        history.push("/categories");
-    }
+import { Link } from "react-router-dom";
+const CallAction = () => {
 
     return (
         <section className="call-action">
-            <div className="container">
-                <h3>Always Free. Play More Today (need to edit)</h3>
-                <form onSubmit={handleSubmit}>
+            <div className="container text-center">
+                <h3>Always Free. Play More Today </h3>
+                <h4>Learn How To Play. Click here</h4>
+                <form>
                     <button>
-                        <i></i>TRY IT OUT
+                        <Link to="/rule">icon</Link>
                     </button>
                 </form>
             </div>

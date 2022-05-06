@@ -1,10 +1,10 @@
-import React , {useState} from "react";
+import React , {useState } from "react";
 import WordDetail from "./WordDetail";
 import "./WordCard.css";
 import { Link } from "react-router-dom";
 import AddingWordsForm from "../auth/AddingWordsForm";
-// import AddingWordsForm from "../auth/AddingWordsForm";
- // import AddingWordsForm from "../auth/AddingWordsForm";
+// import UserContext from "../auth/UserContext";
+
 
 /** Show list of word cards.
  *
@@ -16,29 +16,9 @@ import AddingWordsForm from "../auth/AddingWordsForm";
  */
 
 const WordCard = ({ words, name, addingwords }) => {
-  console.log(name)
   const [next, setNext] = useState(0);
   const [score, setScore] = useState(0);
-  // const [errors, setErrors] = useState({});
-  // const history = useHistory();
-  // const [formData, setFormData] = useState({
-  //   handle: "",
-  //   name: "",
-  //   description: "",
-  // });
 
-    // // handles form submit
-    // async function handleSubmit(e) {
-    //   e.preventDefault();
-    //   let res = await addingwords(formData);
-      
-    //   if (res.success) {
-    //       history.push("/addingwords");
-          
-    //   } else {
-    //       setErrors(res.errors);
-    //   }
-    // }
 
     // handles form submit
     async function handleSubmit(e) {
@@ -69,7 +49,7 @@ const WordCard = ({ words, name, addingwords }) => {
                           </Link>
         </button>
       </div>
-      <div className="score  float-right">
+      <div className="score float-right">
         <div className="score-count">{score}</div>
         <button type="button"
                 onClick={() => setScore( score + 1 )}
