@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardTitle } from "reactstrap";
-import WordGeneratorApi from "../api/api";
 // import "./CategoryCard.css";
 
 /** Show information of a category on the Category List 
@@ -9,22 +8,14 @@ import WordGeneratorApi from "../api/api";
  * CategoryList -> CategoryCard
 */
 
-
 const CategoryCard = ({ name, handle }) => {
-
-    function handleClick(e) {
-        e.preventDefault();
-        WordGeneratorApi.remove(handle);
-    }
     return (
-        <div className="category-card"> 
+        <div>
             <Link className="text-deccoration-none" to={`/categories/${handle}`}>
                 <Card body className="category-card" outline>
                     <CardBody>
-                        <CardTitle className="text-center">
+                        <CardTitle className="text-success">
                             {name}
-                            <button className="float-right">Fav</button>
-                            <button className="float-right" onClick={handleClick}>Remove</button>
                         </CardTitle>
                     </CardBody>
                 </Card>
