@@ -4,7 +4,8 @@ import CategoryCard  from "./CategoryCard";
 import LoadingSpinner from "../common/LoadingSpinner";
 import SearchForm from "../common/SearchForm";
 import { Link } from "react-router-dom";
-
+import { v4 as uuidv4 } from 'uuid';
+ 
 const CategoryList = () => {
     const [categories, setCategories] = useState(null);
 
@@ -33,9 +34,11 @@ const CategoryList = () => {
                 <div>
                     {categories.map((c) => (
                         <CategoryCard
+                            id={uuidv4()}
                             key={c.handle}
                             handle={c.handle}
                             name={c.name}
+                            data={categories}
                         />
                     ))}
                 </div>

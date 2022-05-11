@@ -32,7 +32,7 @@ const AddingWordsForm = ({ addingwords }) => {
 
     return (
         <div>
-            <h3>New Words For </h3>
+            <h3 className="text-center">Adding New Words for Category </h3>
             <Form className="" onSubmit={handleSubmit}>
                 <FormGroup floating>
                     <Input  

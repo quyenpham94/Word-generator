@@ -15,18 +15,19 @@ import AddingWordsForm from "../auth/AddingWordsForm";
  *
  */
 
-const WordCard = ({ words, name, addingwords }) => {
+const WordCard = ({ words, name, addingwords, handle}) => {
   const [next, setNext] = useState(0);
   const [score, setScore] = useState(0);
-
 
     // handles form submit
     async function handleSubmit(e) {
       e.preventDefault();
+
       return (
-        <>
+        <div>
+          <h1>Adding Words for {handle} Category</h1>
           <AddingWordsForm name={name} addingwords={addingwords} />
-        </>
+        </div>
       )
     }
 
@@ -45,7 +46,7 @@ const WordCard = ({ words, name, addingwords }) => {
       <div>
         <button type="submit" onSubmit={handleSubmit}>
                           <Link to="/addingwords">
-                          Add Words
+                          Add Word
                           </Link>
         </button>
       </div>

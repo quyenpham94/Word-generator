@@ -116,8 +116,7 @@ class WordGeneratorApi {
   static async update(handle, data) {
     let res = await this.request(`categories/${handle}`, data, "patch");
     return res.token;
-  }
-
-}
+  };
+};
 
 export default WordGeneratorApi;

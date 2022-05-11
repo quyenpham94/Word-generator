@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import WordGeneratorApi from "../api/api";
-import { v4 as uuidv4 } from 'uuid';
-// import "./CategoryCard.css";
+import UserContext from "../auth/UserContext";
+// import { v4 as uuidv4 } from 'uuid';
+import "./CategoryCard.css";
 
 /** Show information of a category on the Category List 
  * 
@@ -12,6 +13,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const CategoryCard = ({ name, handle }) => {
+    // authentication check
+    const { currentUser } = useContext(UserContext);
+    console.debug("Navigation", "currentUser=", currentUser);
+
 
     function handleClick(e) {
         e.preventDefault();
@@ -24,8 +29,10 @@ const CategoryCard = ({ name, handle }) => {
                     <CardBody>
                         <CardTitle className="text-center">
                             {name}
-                            <button className="float-right">Fav</button>
+                            {/* <button className="float-right">Fav</button> */}
+                            {(currentUser.username !== "testadmin") ? "" : 
                             <button className="float-right" onClick={handleClick}>Remove</button>
+                            }
                         </CardTitle>
                     </CardBody>
                 </Card>

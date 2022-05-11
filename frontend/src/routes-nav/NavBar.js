@@ -52,6 +52,11 @@ const NavBar = ({ logout }) => {
                         Categories
                     </NavLink>
                 </NavItem>
+                {/* <NavItem>
+                    <NavLink className="nav-link" href="/favorite">
+                        Favorite
+                    </NavLink>
+                </NavItem> */}
                 <NavItem>
                     <NavLink className="nav-link" href="/profile">
                         Profile

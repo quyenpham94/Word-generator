@@ -7,7 +7,6 @@ import WordCard from "./WordCard";
 const CategoryDetail = ({ addingwords }) => {
     const { handle } = useParams();
     const [category, setCategory] = useState(null);
-    console.log(category)
     useEffect(
         function getCategoryDetail() {
             async function getCategory() {
@@ -24,7 +23,7 @@ const CategoryDetail = ({ addingwords }) => {
     return (
         <div className="text-center">
             <h1>{category.name}</h1>
-            <WordCard words={category.words} name={category.name} addingwords={addingwords} />
+            <WordCard words={category.words} name={category.name} addingwords={addingwords} handle={handle} />
         </div>
     )
 }

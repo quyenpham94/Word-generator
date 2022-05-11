@@ -11,6 +11,7 @@ import ProtectingRoute from "./ProtectingRoute";
 import NewCategoryForm from "../auth/NewCategoryForm";
 import AddingWordsForm from "../auth/AddingWordsForm";
 import LearnPage from "../homepage/LearnPage";
+// import FavoriteForm from "../auth/FavoriteForm";
 // import WordCard from "../categories/WordCard";
 
 /** Routes are wrapped by <Private> would only visible when logged in
@@ -52,6 +53,10 @@ const Routes = ({ login, signup, newcategory, addingwords }) => {
                 <PrivateRoute exact path="/addingwords">
                     <AddingWordsForm addingwords={addingwords} />
                 </PrivateRoute>
+                {/* <PrivateRoute exact path="/favorite">
+                    <FavoriteForm />
+                </PrivateRoute>
+                  */}
 
                 <Redirect to="/" />
             </Switch>
