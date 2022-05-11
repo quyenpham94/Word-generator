@@ -19,28 +19,36 @@ const LearnPage = () => {
             words have passed. In the end the team with the most scores wins!
             </span>
             <div>
+            <div className="mt-5">
                 <h1> DEMO </h1>
-            <h2>{name}</h2>
-            {(next < words.length) 
-            ? <WordDetail name={words[next]} />
-            : null}
-                <button type="button" 
-                        onClick={() => setNext( next + 1 )}
-                >Next
-                </button>
+                <h2>{name}</h2>
+                {(next < words.length) 
+                ? <WordDetail name={words[next]} />
+                : null}
+                    <button type="button" 
+                            onClick={() => setNext( next + 1 )}
+                    >Next
+                    </button>
+                </div>
+                <div className="score float-right ">
+                    <div className="score-count">{score}</div>
+                    <button type="button"
+                            onClick={() => setScore( score + 1 )}
+                    >Correct Answer
+                    </button>
+                </div>
+                <div className="score float-left">
+                    <button>
+                        <Link to="/rule" > Refresh </Link>
+                    </button>
+                </div>
+                <div className="score text-center">
+                    <button>
+                        <Link to="/categories" > START </Link>
+                    </button>
+                </div>
             </div>
-            <div className="score float-right">
-                <div className="score-count">{score}</div>
-                <button type="button"
-                        onClick={() => setScore( score + 1 )}
-                >Correct Answer
-                </button>
-            </div>
-            <div className="score float-left">
-            <button>
-                <Link to="/rule">refresh</Link>
-            </button>
-            </div>
+
         </div>
 
     )};

@@ -24,10 +24,11 @@ const CategoryList = () => {
             <h3 className="category-list">
                 Which object would you like?
             </h3>
-            <div>
+
+            <SearchForm searchFor={search} />
+            <div className="text-center mt-3 mb-3">
                 <button><Link to="/newcategory">Create New</Link></button>
             </div>
-            <SearchForm searchFor={search} />
             {categories.length ? (
                 <div>
                     {categories.map((c) => (
@@ -41,6 +42,7 @@ const CategoryList = () => {
             ) : (
                 <p className="text-center">Sorry, no objects were found</p>
             )}
+
         </div>
     );
 

@@ -9,7 +9,7 @@ const CallAction = () => {
                 <h4>Learn How To Play. Click here</h4>
                 <form>
                     <button>
-                        <Link to="/rule">icon</Link>
+                        <Link to="/rule">here</Link>
                     </button>
                 </form>
             </div>
