@@ -26,7 +26,7 @@ function App() {
     useEffect(
         function loadUserInfo() {
             async function getCurrentUser() {
-                if (token) {
+                if (token && !currentUser) {
                     try {
                         let { username } = jwt.decode(token);
                         // put the token on the WordGeneratorApi class
@@ -35,6 +35,7 @@ function App() {
                         setCurrentUser(currentUser);
                     } catch (err) {
                         setCurrentUser(null);
+                        console.log(err);
                     }
                 }
                 setIsLoaded(true);
@@ -46,7 +47,7 @@ function App() {
             setIsLoaded(false);
             getCurrentUser();  
         },
-        [token]
+        [token, currentUser]
     );
 
     // handles logout

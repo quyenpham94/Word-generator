@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import WordGeneratorApi from "../api/api";
+import { v4 as uuidv4 } from 'uuid';
 // import "./CategoryCard.css";
 
 /** Show information of a category on the Category List 

@@ -8,6 +8,9 @@ const LearnPage = () => {
     const [score, setScore] = useState(0);
     let name = "animals";
     let words = ["dog", "cat", "rabbit", "snake", "turtle"]; 
+
+    const handleSubmit = () => {};
+
     return (
         <div className="text-center">
             <h1>RULE</h1>
@@ -37,11 +40,13 @@ const LearnPage = () => {
                     >Correct Answer
                     </button>
                 </div>
-                <div className="score float-left">
-                    <button>
-                        <Link to="/rule" > Refresh </Link>
-                    </button>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className="score float-left">
+                        <button type="submit">
+                            <Link to="/rule" > Refresh </Link>
+                        </button>
+                    </div>
+                </form>
                 <div className="score text-center">
                     <button>
                         <Link to="/categories" > START </Link>
