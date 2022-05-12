@@ -1,3 +1,7 @@
+# Word Generator App
+### <div align='center'>Try the Word Generator App Here</div>
+### <div align='center'>https://word-generator.surge.sh/</div>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
