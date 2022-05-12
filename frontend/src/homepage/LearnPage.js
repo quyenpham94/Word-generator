@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import WordDetail from "../categories/WordDetail";
 import { Link } from "react-router-dom";
+import "./LearnPage.css";
 
 
 const LearnPage = () => {
     const [next, setNext] = useState(0);
     const [score, setScore] = useState(0);
-    let name = "animals";
+    let name = "Animals";
     let words = ["dog", "cat", "rabbit", "snake", "turtle"]; 
 
     const handleSubmit = () => {};
@@ -32,7 +33,7 @@ const LearnPage = () => {
                             onClick={() => setNext( next + 1 )}
                     >Next
                     </button>
-                </div>
+            </div>
                 <div className="score float-right ">
                     <div className="score-count">{score}</div>
                     <button type="button"

@@ -5,12 +5,20 @@ const CallAction = () => {
     return (
         <section className="call-action">
             <div className="container text-center">
-                <h3>Always Free. Play More Today </h3>
-                <h4>Learn How To Play. Click here</h4>
+                <div>
+                <h5>Simply create your account in order to use our available 
+                    objects. You also can create your own objects with various 
+                    new words that are suitable for your team and your family
+                </h5>
+                </div>
+
+                    <h4>Always Free. Play More Today</h4>
+                    <p>Learn How To Play. Click here</p>
+ 
                 <form>
-                    <button>
-                        <Link to="/rule">here</Link>
-                    </button>
+                    
+                        <Link to="/rule"><button>Here</button></Link>
+                    
                 </form>
             </div>
         </section>

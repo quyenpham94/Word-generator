@@ -1,0 +1,9 @@
+.detail {
+    width: 1000px;
+    height: 300px;
+    text-align: center;
+    /* padding: 1px;
+    margin: auto; */
+    font-size: 100px;
+    color: rgb(248, 115, 152);
+}

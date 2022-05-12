@@ -28,7 +28,9 @@ const CategoryList = () => {
 
             <SearchForm searchFor={search} />
             <div className="text-center mt-3 mb-3">
-                <button><Link to="/newcategory">Create New</Link></button>
+                <span> Create your own object?
+                    <p><Link to="/newcategory"><button>Create New</button></Link></p>
+                </span>
             </div>
             {categories.length ? (
                 <div>

@@ -50,6 +50,13 @@ const WordCard = ({ words, name, addingwords, handle}) => {
                           </Link>
         </button>
       </div>
+      <div>
+        <button className="float-left">
+          <Link to='/categories'>
+            Back
+          </Link>
+        </button>
+      </div>
       <div className="score float-right">
         <div className="score-count">{score}</div>
         <button type="button"
