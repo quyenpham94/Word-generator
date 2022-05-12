@@ -20,12 +20,23 @@ INSERT INTO categories (handle,
     VALUES ('animals', 'Animals','animals'),
            ('sports','Sports','sports'),
            ('places', 'Places','places'),
-           ('food and cooking', 'Food and Cooking','food and cooking');
-           ('movies 1', 'Movies 1', 'movies 1');
-           ('movies 2', 'Movies 2', 'movies 2');
-           ('food 1', 'Food 1', 'food 1');
-           ('food 2', 'Food 2', 'food 2');
-           ('nature', 'Nature', 'nature');
+           ('food and cooking', 'Food and Cooking','food and cooking'),
+           ('movies 1', 'Movies 1', 'movies 1'),
+           ('movies 2', 'Movies 2', 'movies 2'),
+           ('food 1', 'Food 1', 'food 1'),
+           ('food 2', 'Food 2', 'food 2'),
+           ('nature', 'Nature', 'nature'),
+           ('math', 'Math', 'math'),
+           ('music', 'Music', 'music'),
+           ('art', 'Art', 'art'),
+           ('dog breeds', 'Dog Breeds', 'dog breeds'),
+           ('feelings and emotions', 'Feelings and Emotions', 'feelings and emotions'),
+           ('Halloween', 'Halloween', 'Halloween'),
+           ('Spring', 'Spring', 'Spring'),
+           ('Christmas', 'Christmas', 'Christmas'),
+           ('Thanksgiving', 'Thanksgiving', 'Thanksgiving'),
+
+
 
 INSERT INTO words (name, category_handle)
     VALUES ('leopard', 'animals'),
@@ -67,55 +78,158 @@ INSERT INTO words (name, category_handle)
            ('green bean', 'food and cooking'),
            ('whipped cream', 'food and cooking'),
            ('salami', 'food and cooking'),
-           ('kettle', 'food and cooking');
-           ('Spiderman', 'movies 1');
-           ('Groundhog Day', 'movies 1');
-           ('Back to the Future', 'movies 1');
-           ('Apollo 13', 'movies 1');
-           ('Batman', 'movies 1');
-           ('The Princess Bride', 'movies 1');
-           ('High School Musical', 'movies 1');
-           ('Snow White', 'movies 1');
-           ('Tarzan', 'movies 1');
-           ('Sleeping Beauty', 'movies 1');
-           ('The Lion King', 'movies 2');
-           ('Dumbo', 'movies 2');
-           ('Aladdin', 'movies 2');
-           ('Forest Gump', 'movies 2');
-           ('Beauty and the Beast', 'movies 2');
-           ('Up', 'movies 2');
-           ('Thoy Story', 'movies 2');
-           ('Cars', 'movies 2');
-           ('Finding Nemo', 'movies 2');
-           ('The Incredibles', 'movies 2');
-           ('beef jerky', 'food 1');
-           ('deep-fry', 'food 1');
-           ('blackberry', 'food 1');
-           ('pancakes', 'food 1');
-           ('broth', 'food 1');
-           ('hot dogs', 'food 1');
-           ('Kool-aid', 'food 1');
-           ('bake', 'food 1');
-           ('waffles', 'food 1');
-           ('crepe', 'food 1');
-           ('KFC', 'food 2');
-           ('appetizer', 'food 2');
-           ('frying pan', 'food 2');
-           ('popcorn', 'food 2');
-           ('chicken pot pie', 'food 2');
-           ('strawberry', 'food 2');
-           ('basil', 'food 2');
-           ('taco', 'food 2');
-           ('Burger King', 'food 2');
-           ('McDonalds', 'food 2');
-           ('river', 'nature');
-           ('cliff', 'nature');
-           ('moor', 'nature');
-           ('predator', 'nature');
-           ('weeping pillow', 'nature');
-           ('typhoon', 'nature');
-           ('saltwater', 'nature');
-           ('wadi', 'nature');
-           ('paw', 'nature');
-           ('wings', 'nature');
+           ('kettle', 'food and cooking'),
+           ('Spiderman', 'movies 1'),
+           ('Groundhog Day', 'movies 1'),
+           ('Back to the Future', 'movies 1'),
+           ('Apollo 13', 'movies 1'),
+           ('Batman', 'movies 1'),
+           ('The Princess Bride', 'movies 1'),
+           ('High School Musical', 'movies 1'),
+           ('Snow White', 'movies 1'),
+           ('Tarzan', 'movies 1'),
+           ('Sleeping Beauty', 'movies 1'),
+           ('The Lion King', 'movies 2'),
+           ('Dumbo', 'movies 2'),
+           ('Aladdin', 'movies 2'),
+           ('Forest Gump', 'movies 2'),
+           ('Beauty and the Beast', 'movies 2'),
+           ('Up', 'movies 2'),
+           ('Thoy Story', 'movies 2'),
+           ('Cars', 'movies 2'),
+           ('Finding Nemo', 'movies 2'),
+           ('The Incredibles', 'movies 2'),
+           ('beef jerky', 'food 1'),
+           ('deep-fry', 'food 1'),
+           ('blackberry', 'food 1'),
+           ('pancakes', 'food 1'),
+           ('broth', 'food 1'),
+           ('hot dogs', 'food 1'),
+           ('Kool-aid', 'food 1'),
+           ('bake', 'food 1'),
+           ('waffles', 'food 1'),
+           ('crepe', 'food 1'),
+           ('KFC', 'food 2'),
+           ('appetizer', 'food 2'),
+           ('frying pan', 'food 2'),
+           ('popcorn', 'food 2'),
+           ('chicken pot pie', 'food 2'),
+           ('strawberry', 'food 2'),
+           ('basil', 'food 2'),
+           ('taco', 'food 2'),
+           ('Burger King', 'food 2'),
+           ('McDonalds', 'food 2'),
+           ('river', 'nature'),
+           ('cliff', 'nature'),
+           ('moor', 'nature'),
+           ('predator', 'nature'),
+           ('weeping pillow', 'nature'),
+           ('typhoon', 'nature'),
+           ('saltwater', 'nature'),
+           ('wadi', 'nature'),
+           ('paw', 'nature'),
+           ('wings', 'nature'),
+           ('regular polygon', 'math'),
+           ('square', 'math'),
+           ('meter', 'math'),
+           ('quantity', 'math'),
+           ('compass', 'math'),
+           ('linear', 'math'),
+           ('thirty', 'math'),
+           ('quadratic', 'math'),
+           ('karat', 'math'),
+           ('standard', 'math'),
+           ('factorial', 'math'),
+           ('asymmetry', 'math'),
+           ('marimba','music'),
+           ('whole note','music'),
+           ('arpeggio','music'),
+           ('organ','music'),
+           ('tuba','music'),
+           ('diminuendo','music'),
+           ('quarter rest','music'),
+           ('dynamics','music'),
+           ('modulation','music'),
+           ('bridge','music'),
+           ('expressionism', 'art'),
+           ('model', 'art'),
+           ('museum', 'art'),
+           ('color wheel', 'art'),
+           ('colored pencil', 'art'),
+           ('screen printing', 'art'),
+           ('ceramics', 'art'),
+           ('palette', 'art'),
+           ('collage', 'art'),
+           ('compass', 'art'),
+           ('Great Dane', 'dog breeds'),
+           ('Bull Terrier', 'dog breeds'),
+           ('Goldendoodle', 'dog breeds'),
+           ('Cocker Spaniel', 'dog breeds'),
+           ('Jack Russell Terrier', 'dog breeds'),
+           ('Pekingese', 'dog breeds'),
+           ('Double Doodle', 'dog breeds'),
+           ('Dalmatian', 'dog breeds'),
+           ('Alaskan Husky', 'dog breeds'),
+           ('Cockapoo', 'dog breeds'),
+           ('arrogant', 'feelings and emotions'),
+           ('cheerful', 'feelings and emotions'),
+           ('turbulent', 'feelings and emotions'),
+           ('cranky', 'feelings and emotions'),
+           ('lascivious', 'feelings and emotions'),
+           ('expectant', 'feelings and emotions'),
+           ('mystified', 'feelings and emotions'),
+           ('failure', 'feelings and emotions'),
+           ('worry', 'feelings and emotions'),
+           ('enchanting', 'feelings and emotions'),
+           ('bats', 'Halloween'),
+           ('carve', 'Halloween'),
+           ('moon', 'Halloween'),
+           ('spooks', 'Halloween'),
+           ('warlock', 'Halloween'),
+           ('marshmallow', 'Halloween'),
+           ('fog', 'Halloween'),
+           ('grave', 'Halloween'),
+           ('witch', 'Halloween'),
+           ('dark', 'Halloween'),
+           ('mud', 'Spring'),
+           ('rainbow', 'Spring'),
+           ('bees', 'Spring'),
+           ('daffodil', 'Spring'),
+           ('caterpillar', 'Spring'),
+           ('garden', 'Spring'),
+           ('pollen', 'Spring'),
+           ('tulips', 'Spring'),
+           ('sunshine', 'Spring'),
+           ('spring break', 'Spring'),
+           ('snowflake', 'Christmas'),
+           ('cookies', 'Christmas'),
+           ('reindeer', 'Christmas'),
+           ('chimmey', 'Christmas'),
+           ('the Nutcracker', 'Christmas'),
+           ('mistletoe', 'Christmas'),
+           ('gingerbread house', 'Christmas'),
+           ('icicle', 'Christmas'),
+           ('bells', 'Christmas'),
+           ('ho ho ho', 'Christmas'),
+           ('gratitude', 'Thanksgiving'),
+           ('celebration', 'Thanksgiving'),
+           ('praise', 'Thanksgiving'),
+           ('pilgrims', 'Thanksgiving'),
+           ('cranberry sauce', 'Thanksgiving'),
+           ('gravy', 'Thanksgiving'),
+           ('mashed potatoes', 'Thanksgiving'),
+           ('food drives', 'Thanksgiving'),
+           ('festival', 'Thanksgiving'),
+           ('cornucopia', 'Thanksgiving'),
+           
+
+
+
+
+
+
+
+
+
+
                       
