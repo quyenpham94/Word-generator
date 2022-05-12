@@ -1,12 +1,12 @@
 \echo 'Delete and recreate word-generator db?'
 \prompt 'Return for yes or control-C to cancel > ' foo
 
-DROP DATABASE word_generator;
-CREATE DATABASE word_generator;
-\connect word_generator
+DROP DATABASE word_generator_db;
+CREATE DATABASE word_generator_db;
+\connect word_generator_db
 
 \i word-schema.sql
-\i word-seed.sql
+\i word-db-seed.sql
 
 \echo 'Delete and recreate word_test db?'
 \prompt 'Return for yes or control-C to cancel > ' foo
